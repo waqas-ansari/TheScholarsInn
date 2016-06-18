@@ -3,7 +3,7 @@ package com.arktech.waqasansari.thescholarsinn;
 /**
  * Created by WaqasAhmed on 6/15/2016.
  */
-public class ClassAnnouncement {
+public class ClassAnnAndSchTest {
     private String heading;
     private String text;
     private String day;

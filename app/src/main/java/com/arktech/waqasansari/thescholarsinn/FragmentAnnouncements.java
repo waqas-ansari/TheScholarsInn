@@ -23,11 +23,18 @@ public class FragmentAnnouncements extends Fragment {
         // Required empty public constructor
     }
 
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setRetainInstance(true);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
+
         View view = inflater.inflate(R.layout.fragment_announcements, container, false);
 
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.annCardList);
@@ -36,38 +43,38 @@ public class FragmentAnnouncements extends Fragment {
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
 
-        List<ClassAnnouncement> announcementList = new ArrayList<>();
-        ClassAnnouncement announcement = new ClassAnnouncement();
+        List<ClassAnnAndSchTest> announcementList = new ArrayList<>();
+        ClassAnnAndSchTest announcement = new ClassAnnAndSchTest();
         announcement.setHeading("closed");
         announcement.setText("Scholars' Inn will remain closed today due to city situation.");
         announcement.setDay("June 14, 2016");
         announcementList.add(announcement);
 
-        announcement = new ClassAnnouncement();
+        announcement = new ClassAnnAndSchTest();
         announcement.setHeading("closed");
         announcement.setText("Scholars' Inn will remain closed today due to city situation.");
         announcement.setDay("June 14, 2016");
         announcementList.add(announcement);
 
-        announcement = new ClassAnnouncement();
+        announcement = new ClassAnnAndSchTest();
         announcement.setHeading("closed");
         announcement.setText("Scholars' Inn will remain closed today due to city situation.");
         announcement.setDay("June 14, 2016");
         announcementList.add(announcement);
 
-        announcement = new ClassAnnouncement();
+        announcement = new ClassAnnAndSchTest();
         announcement.setHeading("closed");
         announcement.setText("Scholars' Inn will remain closed today due to city situation.");
         announcement.setDay("June 14, 2016");
         announcementList.add(announcement);
 
-        announcement = new ClassAnnouncement();
+        announcement = new ClassAnnAndSchTest();
         announcement.setHeading("closed");
         announcement.setText("Scholars' Inn will remain closed today due to city situation.");
         announcement.setDay("June 14, 2016");
         announcementList.add(announcement);
 
-        recyclerView.setAdapter(new AdapterAnnouncement(announcementList));
+        recyclerView.setAdapter(new AdapterAnnAndSchTest(announcementList));
 
         return view;
     }

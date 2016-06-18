@@ -1,8 +1,6 @@
 package com.arktech.waqasansari.thescholarsinn;
 
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,12 +11,10 @@ import java.util.List;
 /**
  * Created by WaqasAhmed on 6/15/2016.
  */
-public class AdapterAnnouncement extends RecyclerView.Adapter<AdapterAnnouncement.AnnouncementViewHolder> {
-    private List<ClassAnnouncement> announcementList;
+public class AdapterAnnAndSchTest extends RecyclerView.Adapter<AdapterAnnAndSchTest.AnnouncementViewHolder> {
+    private List<ClassAnnAndSchTest> announcementList;
 
-
-
-    public AdapterAnnouncement(List<ClassAnnouncement> announcementList) {
+    public AdapterAnnAndSchTest(List<ClassAnnAndSchTest> announcementList) {
         this.announcementList = announcementList;
     }
 
@@ -26,14 +22,14 @@ public class AdapterAnnouncement extends RecyclerView.Adapter<AdapterAnnouncemen
     public AnnouncementViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.
                 from(parent.getContext()).
-                inflate(R.layout.custom_card_ann, parent, false);
+                inflate(R.layout.card_ann_and_sch_test, parent, false);
 
         return new AnnouncementViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(AnnouncementViewHolder holder, int position) {
-        ClassAnnouncement announcement = announcementList.get(position);
+        ClassAnnAndSchTest announcement = announcementList.get(position);
         holder.txtHeading.setText(announcement.getHeading());
         holder.txtText.setText(announcement.getText());
         holder.txtDay.setText(announcement.getDay());
