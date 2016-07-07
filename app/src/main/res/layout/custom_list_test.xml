@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/txtClassName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Class: 11-A (Science)"
+        android:textSize="17sp"/>
+
+    <TextView
+        android:id="@+id/txtSubject"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Subject: Physics"
+        android:textSize="17sp"/>
+
+    <TextView
+        android:id="@+id/txtTopic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Topic: Laws of Motion"
+        android:textSize="17sp"/>
+
+    <TextView
+        android:id="@+id/txtTeacher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Teacher: Waqas Ahmed Ansari"
+        android:textSize="17sp"/>
+
+</LinearLayout>
