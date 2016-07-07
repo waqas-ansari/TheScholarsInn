@@ -1,61 +1,91 @@
 package com.arktech.waqasansari.thescholarsinn;
 
-import android.support.design.widget.NavigationView;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
+import android.content.Intent;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
-import android.view.MenuItem;
-
+import android.view.View;
 
 public class ActivityHome extends AppCompatActivity {
-
-
-    DrawerLayout mDrawerLayout;
-    NavigationView mNavigationView;
-    FragmentManager mFragmentManager;
-    FragmentTransaction mFragmentTransaction;
-
-
-    private Toolbar toolbar;
+    String[] text = {"Text to be displayed", "Text to be displayed", "Text to be displayed"};
+    View[] indicators = new View[3];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
+        viewPager.setAdapter(new CustomPagerAdapter(text, ActivityHome.this));
 
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
-        mNavigationView = (NavigationView) findViewById(R.id.navItems) ;
+        indicators[0] = findViewById(R.id.im1);
+        indicators[1] = findViewById(R.id.im2);
+        indicators[2] = findViewById(R.id.im3);
 
-        mFragmentManager = getSupportFragmentManager();
-        mFragmentTransaction = mFragmentManager.beginTransaction();
-        mFragmentTransaction.replace(R.id.containerView, new TabFragment()).commit();
-
-
-        mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
-            public boolean onNavigationItemSelected(MenuItem menuItem) {
-                mDrawerLayout.closeDrawers();
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
-                //click events of navigation view
-
-                return false;
             }
 
+            @Override
+            public void onPageSelected(int position) {
+                for (int i=0; i<indicators.length; i++){
+                    if(i == position)
+                        indicators[i].setBackground(ContextCompat.getDrawable(ActivityHome.this, R.drawable.filled_circle));
+                    else indicators[i].setBackground(ContextCompat.getDrawable(ActivityHome.this, R.drawable.holo_circle));
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
         });
 
-        ActionBarDrawerToggle mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.app_name,
-                R.string.app_name);
 
-        mDrawerLayout.setDrawerListener(mDrawerToggle);
+        findViewById(R.id.btnAnn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ActivityHome.this, ActivityAnnouncement.class));
+            }
+        });
 
-        mDrawerToggle.syncState();
+        findViewById(R.id.btnScheduledTests).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ActivityHome.this, ActivityScheduledTests.class));
+            }
+        });
+
+        findViewById(R.id.btnTestAndAttendance).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ActivityHome.this, ActivityTestMarksAndAttendance.class));
+            }
+        });
+
+        findViewById(R.id.btnTeachers).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ActivityHome.this, ActivityTeachers.class));
+            }
+        });
+
+        findViewById(R.id.btnTwitter).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ActivityHome.this, ActivityTweets.class));
+            }
+        });
+
+        findViewById(R.id.btnFacebook).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ActivityHome.this, ActivityFacebook.class));
+            }
+        });
+
     }
-
 }

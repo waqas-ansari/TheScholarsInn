@@ -5,4 +5,19 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
+
+    <array name="list">
+        <item>Name</item>
+        <item>Name</item>
+        <item>Name</item>
+        <item>Name</item>
+        <item>Name</item>
+        <item>Name</item>
+        <item>Name</item>
+        <item>Name</item>
+        <item>Name</item>
+        <item>Name</item>
+
+
+    </array>
 </resources>
