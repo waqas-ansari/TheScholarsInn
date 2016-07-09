@@ -4,32 +4,104 @@
     android:layout_height="wrap_content"
     android:padding="10dp">
 
-    <TextView
-        android:id="@+id/txtClassName"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Class: 11-A (Science)"
-        android:textSize="17sp"/>
+        android:orientation="horizontal"
+        android:padding="3dp">
 
-    <TextView
-        android:id="@+id/txtSubject"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Subject: Physics"
-        android:textSize="17sp"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.2"
+            android:text="@string/text_class"
+            android:textSize="17sp"/>
+        <TextView
+            android:id="@+id/txtClassName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:layout_marginStart="3dp"
+            android:layout_marginLeft="3dp"
+            android:text="11-A (Science)"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
 
-    <TextView
-        android:id="@+id/txtTopic"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Topic: Laws of Motion"
-        android:textSize="17sp"/>
+    </LinearLayout>
 
-    <TextView
-        android:id="@+id/txtTeacher"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Teacher: Waqas Ahmed Ansari"
-        android:textSize="17sp"/>
+        android:orientation="horizontal"
+        android:padding="3dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.2"
+            android:text="@string/text_subject"
+            android:textSize="17sp"/>
+        <TextView
+            android:id="@+id/txtSubject"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:layout_marginStart="3dp"
+            android:layout_marginLeft="3dp"
+            android:text="Physics"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="3dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.2"
+            android:text="Topic: "
+            android:textSize="17sp"/>
+        <TextView
+            android:id="@+id/txtTopic"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:layout_marginStart="3dp"
+            android:layout_marginLeft="3dp"
+            android:text="Laws of Motion"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="3dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.2"
+            android:text="@string/text_teacher"
+            android:textSize="17sp"/>
+        <TextView
+            android:id="@+id/txtTeacher"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:layout_marginStart="3dp"
+            android:layout_marginLeft="3dp"
+            android:text="Atif Ata"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
 
 </LinearLayout>

@@ -12,10 +12,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/grdButtons"
-        android:scaleType="center"
-        android:scaleX="1"
-        android:scaleY="0.7"
-        android:alpha="0.3"/>
+        android:scaleType="centerInside"
+        android:src="@drawable/coaching_logo"
+        android:alpha="0.1"/>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/viewPager"
@@ -55,8 +54,7 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:orientation="vertical"
-        android:layout_alignParentBottom="true"
-        android:background="@drawable/btn_shape">
+        android:layout_alignParentBottom="true">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -68,7 +66,9 @@
                 android:id="@+id/btnAnn"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:background="@drawable/btn_shape"
+                android:layout_margin="1dp">
                 <ImageView
                     android:id="@+id/imageView1"
                     android:layout_width="wrap_content"
@@ -83,8 +83,8 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="10dp"
                     android:textColor="#FFF"
-                    android:textSize="15sp"
-                    android:text="Announcements"/>
+                    android:textSize="12sp"
+                    android:text="@string/text_announcement"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -92,7 +92,9 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:background="@drawable/btn_shape"
+                android:layout_margin="1dp">
                 <ImageView
                     android:id="@+id/imageView2"
                     android:layout_width="wrap_content"
@@ -107,15 +109,17 @@
                     android:layout_below="@+id/imageView2"
                     android:layout_marginTop="10dp"
                     android:textColor="#FFF"
-                    android:textSize="15sp"
-                    android:text="Scheduled Tests"/>
+                    android:textSize="12sp"
+                    android:text="@string/text_scheduled_tests"/>
             </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/btnTestAndAttendance"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:background="@drawable/btn_shape"
+                android:layout_margin="1dp">
                 <ImageView
                     android:id="@+id/imageView3"
                     android:layout_width="wrap_content"
@@ -130,9 +134,9 @@
                     android:layout_below="@+id/imageView3"
                     android:layout_marginTop="10dp"
                     android:textColor="#FFF"
-                    android:textSize="15sp"
+                    android:textSize="12sp"
                     android:gravity="center"
-                    android:text="Test Marks/Attendance"/>
+                    android:text="@string/text_attendance"/>
             </RelativeLayout>
 
         </LinearLayout>
@@ -148,7 +152,9 @@
                 android:id="@+id/btnTeachers"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:background="@drawable/btn_shape"
+                android:layout_margin="1dp">
                 <ImageView
                     android:id="@+id/imageView4"
                     android:layout_width="wrap_content"
@@ -163,15 +169,17 @@
                     android:layout_below="@+id/imageView4"
                     android:layout_marginTop="10dp"
                     android:textColor="#FFF"
-                    android:textSize="15sp"
-                    android:text="Teachers"/>
+                    android:textSize="12sp"
+                    android:text="@string/text_teachers"/>
             </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/btnTwitter"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:background="@drawable/btn_shape"
+                android:layout_margin="1dp">
                 <ImageView
                     android:id="@+id/imageView5"
                     android:layout_width="wrap_content"
@@ -186,15 +194,17 @@
                     android:layout_below="@+id/imageView5"
                     android:layout_marginTop="10dp"
                     android:textColor="#FFF"
-                    android:textSize="15sp"
-                    android:text="Twitter"/>
+                    android:textSize="12sp"
+                    android:text="@string/text_twitter"/>
             </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/btnFacebook"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:background="@drawable/btn_shape"
+                android:layout_margin="1dp">
                 <ImageView
                     android:id="@+id/imageView6"
                     android:layout_width="wrap_content"
@@ -209,8 +219,8 @@
                     android:layout_below="@+id/imageView6"
                     android:layout_marginTop="10dp"
                     android:textColor="#FFF"
-                    android:textSize="15sp"
-                    android:text="Facebook"/>
+                    android:textSize="12sp"
+                    android:text="@string/text_facebook"/>
             </RelativeLayout>
 
         </LinearLayout>

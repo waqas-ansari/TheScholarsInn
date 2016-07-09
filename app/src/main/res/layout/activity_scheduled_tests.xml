@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -16,17 +16,34 @@
 
     <TextView
         android:id="@+id/txtTestDate"
+        android:layout_below="@+id/toolbar"
+        android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
-        android:padding="15dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
         android:text="Test Date"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:background="?attr/colorPrimary"
         android:textColor="#FFF"/>
+    <TextView
+        android:id="@+id/txtTmp"
+        android:layout_below="@+id/txtTestDate"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:text="Tap here to select test date"
+        android:textSize="15sp"
+        android:textColor="?attr/colorPrimary"/>
 
     <LinearLayout
+        android:layout_below="@+id/txtTmp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -54,4 +71,14 @@
     </LinearLayout>
 
 
-</LinearLayout>
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        android:indeterminate="true"
+        style="?android:attr/progressBarStyle"
+        android:indeterminateDrawable="@drawable/progress"/>
+
+</RelativeLayout>

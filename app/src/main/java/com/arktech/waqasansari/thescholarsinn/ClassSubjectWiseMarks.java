@@ -3,7 +3,7 @@ package com.arktech.waqasansari.thescholarsinn;
 /**
  * Created by Linta Ansari on 7/2/2016.
  */
-public class ClassSubjectWiseResult {
+public class ClassSubjectWiseMarks {
     private String subject;
     private int obtMarks=0;
     private int maxMarks=0;

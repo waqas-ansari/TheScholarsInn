@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:gravity="center_horizontal"
     tools:context=".ActivityTestMarksAndAttendance">
 
     <android.support.v7.widget.Toolbar
@@ -16,7 +17,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:gravity="center">
         <Spinner
             android:id="@+id/spnDate"
             android:layout_width="0dp"
@@ -30,57 +32,45 @@
             android:id="@+id/edtStudentId"
             android:layout_width="0dp"
             android:layout_height="40dp"
-            android:layout_weight="1"
+            android:layout_weight="0.6"
             android:layout_margin="8dp"
             android:inputType="number"
             android:padding="10dp"
             android:textSize="15sp"
             android:background="@drawable/black_border"
             android:imeOptions="actionDone"
-            android:hint="Enter Student ID"/>
-    </LinearLayout>
+            android:hint="@string/text_id"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
-
-        <Button
-            android:id="@+id/btnShowMarks"
-            android:layout_width="150dp"
-            android:layout_height="40dp"
+        <ImageButton
+            android:id="@+id/btnShow"
+            android:layout_width="0dp"
+            android:layout_weight="0.3"
+            android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:textAllCaps="false"
-            android:text="Show Result"
             android:layout_gravity="center"
             android:background="@drawable/bg_button"
-            android:textColor="#FFF"/>
-
-        <Button
-            android:id="@+id/btnShowAttendence"
-            android:layout_width="150dp"
-            android:layout_height="40dp"
-            android:layout_margin="8dp"
-            android:textAllCaps="false"
-            android:text="Show Attendance"
-            android:layout_gravity="center"
-            android:background="@drawable/bg_button"
+            android:src="@drawable/ic_arrow_forward_white_24dp"
             android:textColor="#FFF"/>
 
     </LinearLayout>
 
-    <ScrollView
-        android:id="@+id/scrollAttendance"
+    <View
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone"/>
+        android:layout_height="1dp"
+        android:background="?attr/colorPrimary"/>
 
-    <ListView
-        android:id="@+id/lstMarks"
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tabLayout"
+        style="@style/MyCustomTabLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/cell_shape"/>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone"/>
-
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>

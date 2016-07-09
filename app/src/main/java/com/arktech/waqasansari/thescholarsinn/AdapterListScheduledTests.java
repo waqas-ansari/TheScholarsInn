@@ -43,10 +43,10 @@ public class AdapterListScheduledTests extends BaseAdapter {
 
         ClassScheduledTests test = testsList.get(position);
         if(test != null){
-            ((TextView) convertView.findViewById(R.id.txtClassName)).setText("Class: " + test.getClassName());
-            ((TextView) convertView.findViewById(R.id.txtSubject)).setText("Subject: " + test.getSubject());
-            ((TextView) convertView.findViewById(R.id.txtTopic)).setText("Topic: " + test.getTopic());
-            ((TextView) convertView.findViewById(R.id.txtTeacher)).setText("Teacher: " + test.getTeacher());
+            ((TextView) convertView.findViewById(R.id.txtClassName)).setText(test.getClassName());
+            ((TextView) convertView.findViewById(R.id.txtSubject)).setText(test.getSubject());
+            ((TextView) convertView.findViewById(R.id.txtTopic)).setText(test.getTopic());
+            ((TextView) convertView.findViewById(R.id.txtTeacher)).setText(test.getTeacher());
         }
         return convertView;
     }

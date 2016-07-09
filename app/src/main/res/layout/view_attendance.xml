@@ -8,65 +8,82 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="20dp"
-        android:padding="8dp">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Student Detail"
-            android:textSize="20sp"
-            android:textColor="#000"/>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="8dp"
-            android:background="#000"/>
+        android:layout_marginTop="10dp"
+        android:padding="10dp">
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp">
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_class"
+                android:textSize="17sp"/>
             <TextView
                 android:id="@+id/txtClassName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Class: 11-A (Science)"
-                android:textSize="17sp"/>
+                android:layout_marginStart="3dp"
+                android:layout_marginLeft="3dp"
+                android:text="11-A (Science)"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_student_name"
+                android:textSize="17sp"/>
             <TextView
                 android:id="@+id/txtStudentName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Name: Romana Ejaz"
-                android:textSize="17sp"/>
+                android:layout_marginStart="3dp"
+                android:layout_marginLeft="3dp"
+                android:text="Romana Ejaz"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_father_name"
+                android:textSize="17sp"/>
             <TextView
                 android:id="@+id/txtFatherName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Father Name: Ejaz Ahmed"
-                android:textSize="17sp"/>
+                android:layout_marginStart="3dp"
+                android:layout_marginLeft="3dp"
+                android:text="Ejaz AHmed"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
 
         </LinearLayout>
 
 
-        <TextView
-            android:id="@+id/txtTypeHeading"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Attendance Detail"
-            android:textSize="20sp"
-            android:layout_marginTop="10dp"
-            android:textColor="#000"/>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="8dp"
-            android:background="#000"/>
 
     </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -75,58 +92,14 @@
         android:gravity="center"
         android:layout_margin="8dp"
         android:orientation="horizontal"
-        android:background="@drawable/cell_shape">
-
-        <View
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_weight="0.4"/>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.1"
-            android:textSize="17sp"
-            android:layout_marginStart="5dp"
-            android:layout_marginLeft="5dp"
-            android:textColor="#000"
-            android:text="Month"/>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:textSize="17sp"
-            android:textColor="#000"
-            android:text="Presents"/>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:textSize="17sp"
-            android:textColor="#000"
-            android:text="Total"/>
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:padding="10dp"
-        android:gravity="center"
-        android:layout_margin="8dp"
-        android:orientation="horizontal">
+        android:background="?attr/colorPrimary">
 
         <ImageView
             android:id="@+id/imgShowHide"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.4"
-            android:src="@drawable/ic_keyboard_arrow_right_black_24dp"/>
+            android:src="@drawable/ic_keyboard_arrow_right_white_24dp"/>
 
 
         <TextView
@@ -137,7 +110,8 @@
             android:layout_marginStart="5dp"
             android:layout_marginLeft="5dp"
             android:textSize="17sp"
-            android:textColor="#000"
+            android:textColor="#FFF"
+            android:textStyle="bold"
             android:text="Month"/>
 
         <TextView
@@ -147,8 +121,19 @@
             android:layout_weight="1"
             android:gravity="center"
             android:textSize="17sp"
-            android:textColor="#000"
+            android:textColor="#FFF"
+            android:textStyle="bold"
             android:text="Presents"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="17sp"
+            android:textColor="#FFF"
+            android:textStyle="bold"
+            android:text="@string/text_out_of"/>
 
         <TextView
             android:id="@+id/txtTotalAttendance"
@@ -157,7 +142,8 @@
             android:layout_weight="1"
             android:gravity="center"
             android:textSize="17sp"
-            android:textColor="#000"
+            android:textColor="#FFF"
+            android:textStyle="bold"
             android:text="Total"/>
 
     </LinearLayout>
@@ -166,7 +152,7 @@
         android:id="@+id/lstAttendance"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:visibility="gone"/>
 
 </LinearLayout>

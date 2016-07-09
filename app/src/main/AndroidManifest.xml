@@ -20,14 +20,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ActivityTeachers" />
-        <activity android:name=".ActivityOnlineResult" />
-        <activity android:name=".ActivityTop10" />
-        <activity android:name=".ActivityAnnouncement" />
-        <activity android:name=".ActivityFacebook" />
-        <activity android:name=".ActivityScheduledTests" />
-        <activity android:name=".ActivityTestMarksAndAttendance" />
-        <activity android:name=".ActivityTweets"></activity>
+        <activity android:name=".ActivityTeachers" android:configChanges="orientation" />
+        <activity android:name=".ActivityAnnouncement" android:configChanges="orientation"/>
+        <activity android:name=".ActivityFacebook" android:configChanges="orientation"/>
+        <activity android:name=".ActivityScheduledTests" android:configChanges="orientation"/>
+        <activity android:name=".ActivityTestMarksAndAttendance" android:screenOrientation="portrait" />
+        <activity android:name=".ActivityTweets" android:configChanges="orientation"/>
+
+
     </application>
 
 </manifest>

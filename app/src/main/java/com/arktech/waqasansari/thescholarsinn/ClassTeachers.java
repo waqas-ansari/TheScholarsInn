@@ -6,9 +6,7 @@ package com.arktech.waqasansari.thescholarsinn;
 public class ClassTeachers {
     private String teacherName;
     private String qualification;
-    private String institute;
     private String subject;
-    private String email;
 
     //getters
     public String getTeacherName() {
@@ -19,16 +17,8 @@ public class ClassTeachers {
         return qualification;
     }
 
-    public String getInstitute() {
-        return institute;
-    }
-
     public String getSubject() {
         return subject;
-    }
-
-    public String getEmail() {
-        return email;
     }
 
 
@@ -41,15 +31,7 @@ public class ClassTeachers {
         this.qualification = qualification;
     }
 
-    public void setInstitute(String institute) {
-        this.institute = institute;
-    }
-
     public void setSubject(String subject) {
         this.subject = subject;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 }

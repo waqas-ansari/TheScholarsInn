@@ -7,6 +7,11 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 /**
  * Created by Linta Ansari on 7/3/2016.
  */
@@ -42,11 +47,18 @@ public class AdapterListAttendance extends BaseAdapter {
             convertView = inflater.inflate(R.layout.custom_list_attendance, null);
         }
 
-        ((TextView) convertView.findViewById(R.id.txtAttendanceDate)).setText(date[position].substring(0, date[position].indexOf('T')));
+
         ((TextView) convertView.findViewById(R.id.txtPresent)).setText(present[position]);
 
-
-
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.getDefault());
+        Date dateTemp = null;
+        try {
+            dateTemp = format.parse(date[position]);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        format = new SimpleDateFormat("EEE, dd MMM", Locale.getDefault());
+        ((TextView) convertView.findViewById(R.id.txtAttendanceDate)).setText(format.format(dateTemp));
         return convertView;
     }
 }

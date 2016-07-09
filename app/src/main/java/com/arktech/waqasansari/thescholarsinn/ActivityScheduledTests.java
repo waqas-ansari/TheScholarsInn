@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,7 +31,7 @@ public class ActivityScheduledTests extends AppCompatActivity {
     TextView txtDay;
     TextView txtTestDate;
 
-    ProgressDialog dialog = null;
+    ProgressBar progressBar;
 
     SimpleDateFormat format;
 
@@ -50,6 +51,8 @@ public class ActivityScheduledTests extends AppCompatActivity {
                 onBackPressed();
             }
         });
+
+        progressBar = (ProgressBar) findViewById(R.id.progress);
 
 
         lstTests = (ListView) findViewById(R.id.lstTests);
@@ -74,10 +77,6 @@ public class ActivityScheduledTests extends AppCompatActivity {
                     if(checkIfGreater(temp))
                         Toast.makeText(ActivityScheduledTests.this, "Wrong Date", Toast.LENGTH_SHORT).show();
                     else {
-                        dialog = new ProgressDialog(ActivityScheduledTests.this);
-                        dialog.setTitle("Please wait...");
-                        dialog.setMessage("Fetching scheduled tests");
-                        dialog.show();
                         myCalendar.add(Calendar.DATE, -1);
                         updateLabel(myCalendar);
                     }
@@ -113,7 +112,7 @@ public class ActivityScheduledTests extends AppCompatActivity {
 
     //Class Functions
     private void updateLabel(Calendar myCalendar) {
-        SimpleDateFormat newFormat = new SimpleDateFormat("EEE, MMMM dd, yyyy", Locale.getDefault());
+        SimpleDateFormat newFormat = new SimpleDateFormat("MMMM dd, yyyy", Locale.getDefault());
         txtTestDate.setText(newFormat.format(myCalendar.getTime()));
         newFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
         new FetchScheduledTests(newFormat.format(myCalendar.getTime())).execute();
@@ -131,6 +130,12 @@ public class ActivityScheduledTests extends AppCompatActivity {
 
         public FetchScheduledTests(String date){
             this.date = date;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressBar.setVisibility(View.VISIBLE);
         }
 
         @Override
@@ -154,10 +159,16 @@ public class ActivityScheduledTests extends AppCompatActivity {
                         calendar.add(Calendar.DATE, -1);
                         date = format.format(calendar.getTime());
                     }
-                } catch (Exception e) {
+                } catch (final Exception e) {
                     e.printStackTrace();
-                    if(dialog != null)
-                        dialog.dismiss();
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(ActivityScheduledTests.this, "Error: " + e.toString(), Toast.LENGTH_SHORT).show();
+                            progressBar.setVisibility(View.GONE);
+                        }
+                    });
+
                     return "error";
                 }
             }
@@ -184,11 +195,12 @@ public class ActivityScheduledTests extends AppCompatActivity {
                     tempFormat = new SimpleDateFormat("EEEE", Locale.getDefault());
                     String dd = tempFormat.format(d);
                     txtDay.setText(dd);
-                    tempFormat = new SimpleDateFormat("EEE, MMM dd, yyyy", Locale.getDefault());
+                    tempFormat = new SimpleDateFormat("EEE, MMM  dd, yyyy", Locale.getDefault());
                     dd = tempFormat.format(d);
                     txtTestDate.setText(dd);
                 } catch (ParseException e) {
                     e.printStackTrace();
+                    progressBar.setVisibility(View.GONE);
                 }
 
             }
@@ -212,13 +224,13 @@ public class ActivityScheduledTests extends AppCompatActivity {
 
                     lstTests.setAdapter(new AdapterListScheduledTests(testsList, ActivityScheduledTests.this));
                 }
+                progressBar.setVisibility(View.GONE);
 
             } catch (JSONException e) {
                 e.printStackTrace();
+                progressBar.setVisibility(View.GONE);
             }
-
-            if(dialog != null)
-                dialog.dismiss();
+            progressBar.setVisibility(View.GONE);
         }
     }
 }

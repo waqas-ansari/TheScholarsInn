@@ -30,19 +30,6 @@ public class ApiCalls {
     }
 
     //******************************Class Methods***************************************************
-    //HashMap to Query
-    private String getQueryFromHashMap(HashMap<String, String> params){
-        String result="";
-        String and="";
-
-        for(Map.Entry<String, String> entry : params.entrySet()){
-            result += and + entry.getKey() + "=" + entry.getValue();
-            if(and.isEmpty())
-                and = "&";
-        }
-        return result;
-    }
-
     //Close connection
     private void done() throws IOException {
         urlConnection.disconnect();
@@ -84,20 +71,6 @@ public class ApiCalls {
 
 
 
-
-
-    //GET Http Method
-    public String getHttpRequests(String signature, HashMap<String,String> params) throws IOException {
-        url = new URL(BASE_URL + signature + "?date=" + params.get("date"));
-        prepareConnection("GET");
-
-        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
-        writer.close();
-
-        return convertStreamToString(urlConnection.getInputStream());
-    }
-
-
     // HTTP GET request
     public String sendGet(String signature, String date) throws Exception {
 
@@ -129,6 +102,32 @@ public class ApiCalls {
     public String sendGet(String signature, String date, String studentId) throws Exception {
 
         String url = BASE_URL + signature + "?date=" + date + "&studentid=" + studentId;
+
+        URL obj = new URL(url);
+        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+
+        // optional default is GET
+        con.setRequestMethod("GET");
+
+        //add request header
+        con.setRequestProperty("User-Agent", USER_AGENT);
+
+
+        BufferedReader in = new BufferedReader(
+                new InputStreamReader(con.getInputStream()));
+        String inputLine;
+        StringBuffer response = new StringBuffer();
+
+        while ((inputLine = in.readLine()) != null) {
+            response.append(inputLine);
+        }
+        in.close();
+
+        return response.toString();
+    }
+
+    public String sendGet(String signature) throws Exception{
+        String url = BASE_URL + signature;
 
         URL obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();

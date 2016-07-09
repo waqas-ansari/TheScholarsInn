@@ -11,33 +11,31 @@
         android:layout_height="1dp"
         android:layout_weight="0.4"/>
 
-    <TextView
-        android:id="@+id/txtDateOfTest"
+    <View
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="1dp"
         android:layout_weight="1"
         android:layout_marginStart="5dp"
         android:layout_marginLeft="5dp"
-        android:textSize="15sp"
-        android:text="2016-06-23"/>
+        android:textSize="16sp"/>
 
     <TextView
-        android:id="@+id/txtObtMarks"
+        android:id="@+id/txtObtOutOfTotal"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="center"
-        android:textSize="15sp"
-        android:text="Marks Obtained"/>
+        android:textSize="16sp"
+        android:text="36/40"/>
 
     <TextView
-        android:id="@+id/txtMaxMarks"
+        android:id="@+id/txtDate"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="center"
-        android:textSize="15sp"
-        android:text="Max. Marks"/>
+        android:textSize="16sp"
+        android:text="Wed, 4 July"/>
 
 
 </LinearLayout>
