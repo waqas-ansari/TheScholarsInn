@@ -26,4 +26,5 @@
     <string name="text_qualification">Qualification: </string>
     <string name="text_institute">Institute: </string>
     <string name="text_email">Email ID: </string>
+    <string name="text_topic">Topic:</string>
 </resources>

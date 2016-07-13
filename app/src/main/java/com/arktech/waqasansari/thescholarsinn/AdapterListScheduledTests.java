@@ -39,7 +39,7 @@ public class AdapterListScheduledTests extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if(convertView == null)
-            convertView = inflater.inflate(R.layout.custom_list_test, null);
+            convertView = inflater.inflate(R.layout.custom_list_scheduled_test, null);
 
         ClassScheduledTests test = testsList.get(position);
         if(test != null){

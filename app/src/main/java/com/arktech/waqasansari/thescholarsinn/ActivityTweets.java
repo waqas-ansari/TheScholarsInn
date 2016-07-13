@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 
 public class ActivityTweets extends AppCompatActivity {
     ProgressBar progressBar;
+    WebView tweetView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,11 +34,18 @@ public class ActivityTweets extends AppCompatActivity {
             }
         });
 
-        WebView tweetView = (WebView) findViewById(R.id.tweetView);
+        tweetView = (WebView) findViewById(R.id.tweetView);
         tweetView.getSettings().setDomStorageEnabled(true);
         tweetView.getSettings().setJavaScriptEnabled(true);
 
         progressBar = (ProgressBar) findViewById(R.id.progress);
+
+        tweetView    .setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return event.getAction() == MotionEvent.ACTION_SCROLL;
+            }
+        });
 
         tweetView.setWebViewClient(new WebViewClient() {
             @Override
@@ -60,6 +69,12 @@ public class ActivityTweets extends AppCompatActivity {
 
         String summary = "<a class=\"twitter-timeline\" href=\"https://twitter.com/thescholarsinn\">Tweets by thescholarsinn</a> <script async src=\"//platform.twitter.com/widgets.js\" charset=\"utf-8\"></script>";
         tweetView.loadDataWithBaseURL("https://twitter.com", summary, "text/html", "UTF-8", null);
+    }
 
+    @Override
+    public void onBackPressed() {
+        if(tweetView.canGoBack())
+            tweetView.goBack();
+        else super.onBackPressed();
     }
 }

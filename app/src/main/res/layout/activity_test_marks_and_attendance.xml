@@ -11,7 +11,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
+        android:background="#303F9F"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:title="Test Marks and Attendance" />
 

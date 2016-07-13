@@ -13,7 +13,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1.2"
+            android:layout_weight="1.1"
             android:text="@string/text_class"
             android:textSize="17sp"/>
         <TextView
@@ -38,7 +38,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1.2"
+            android:layout_weight="1.1"
             android:text="@string/text_subject"
             android:textSize="17sp"/>
         <TextView
@@ -63,8 +63,8 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1.2"
-            android:text="Topic: "
+            android:layout_weight="1.1"
+            android:text="@string/text_topic"
             android:textSize="17sp"/>
         <TextView
             android:id="@+id/txtTopic"
@@ -88,7 +88,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1.2"
+            android:layout_weight="1.1"
             android:text="@string/text_teacher"
             android:textSize="17sp"/>
         <TextView

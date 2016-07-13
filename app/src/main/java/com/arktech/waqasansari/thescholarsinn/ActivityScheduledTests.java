@@ -42,15 +42,19 @@ public class ActivityScheduledTests extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
+        if(getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onBackPressed();
+                }
+            });
+        }
+
 
         progressBar = (ProgressBar) findViewById(R.id.progress);
 
@@ -194,12 +198,14 @@ public class ActivityScheduledTests extends AppCompatActivity {
                     Date d = tempFormat.parse(date);
                     tempFormat = new SimpleDateFormat("EEEE", Locale.getDefault());
                     String dd = tempFormat.format(d);
-                    txtDay.setText(dd);
+                    if(!txtDay.getText().toString().equals("Today"))
+                        txtDay.setText(dd);
                     tempFormat = new SimpleDateFormat("EEE, MMM  dd, yyyy", Locale.getDefault());
                     dd = tempFormat.format(d);
                     txtTestDate.setText(dd);
                 } catch (ParseException e) {
                     e.printStackTrace();
+                    Toast.makeText(ActivityScheduledTests.this, e.toString(), Toast.LENGTH_SHORT).show();
                     progressBar.setVisibility(View.GONE);
                 }
 
@@ -228,6 +234,7 @@ public class ActivityScheduledTests extends AppCompatActivity {
 
             } catch (JSONException e) {
                 e.printStackTrace();
+                Toast.makeText(ActivityScheduledTests.this, e.toString(), Toast.LENGTH_SHORT).show();
                 progressBar.setVisibility(View.GONE);
             }
             progressBar.setVisibility(View.GONE);
