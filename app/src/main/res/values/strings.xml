@@ -15,7 +15,7 @@
     <string name="text_subject">Subject: </string>
     <string name="text_teacher">Teacher: </string>
     <string name="text_show">Show</string>
-    <string name="text_id">Student ID</string>
+    <string name="text_id">ID</string>
     <string name="text_out_of">out of</string>
     <string name="text_attendance">Test/Attendance</string>
     <string name="text_facebook">Facebook</string>
@@ -27,4 +27,17 @@
     <string name="text_institute">Institute: </string>
     <string name="text_email">Email ID: </string>
     <string name="text_topic">Topic:</string>
+    <string name="text_new_ann">New Announcement</string>
+    <string name="text_test_days">Test Days</string>
+    <string name="text_time_table">Time Table</string>
+    <string name="text_info">Contact Information</string>
+    <string name="text_phone">Phone:</string>
+    <string name="phone_no">021 34920339</string>
+    <string name="text_mobile">Mobile:</string>
+    <string name="mobile_no">0312-SCHOLAR (7246527)</string>
+    <string name="email_coaching">info@thescholarsinn.com</string>
+    <string name="text_website">Website:</string>
+    <string name="website">www.thescholarsinn.com</string>
+    <string name="text_advertisement">No new Advertisement</string>
+    <string name="text_new_announcement">No new Announcement</string>
 </resources>

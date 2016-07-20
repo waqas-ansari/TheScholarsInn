@@ -1,46 +1,28 @@
 package com.arktech.waqasansari.thescholarsinn;
 
-import android.app.ProgressDialog;
-import android.content.Context;
-import android.graphics.Color;
-import android.os.AsyncTask;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.*;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.ScrollView;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 public class ActivityTestMarksAndAttendance extends AppCompatActivity {
     Spinner spnDate;
+    Spinner spnYear;
     EditText edtStudentId;
 
     ImageButton btnShow;
+
+    String monthStrings[] = {"January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +44,7 @@ public class ActivityTestMarksAndAttendance extends AppCompatActivity {
 
 
         spnDate = (Spinner) findViewById(R.id.spnDate);
+        spnYear = (Spinner) findViewById(R.id.spnYear);
         edtStudentId = (EditText) findViewById(R.id.edtStudentId);
 
         btnShow = (ImageButton) findViewById(R.id.btnShow);
@@ -76,11 +59,8 @@ public class ActivityTestMarksAndAttendance extends AppCompatActivity {
 
                 edtStudentId.clearFocus();
 
-                String selectedText = spnDate.getSelectedItem().toString();
-                String date = selectedText.substring(selectedText.indexOf(' ') + 1) +
-                        "-" + getMonthInt(selectedText.substring(0, selectedText.indexOf(' ')))
-                        + "-" + "01";
-                String month = getMonthString(Integer.valueOf(getMonthInt(selectedText.substring(0, selectedText.indexOf(' ')))));
+                String date = spnYear.getSelectedItem().toString() + "-" + getMonthInt(spnDate.getSelectedItem().toString()) + "-01";
+                String month = spnDate.getSelectedItem().toString();
                 Bundle bundle = new Bundle();
                 bundle.putString("date", date);
                 bundle.putString("id", edtStudentId.getText().toString());
@@ -101,64 +81,22 @@ public class ActivityTestMarksAndAttendance extends AppCompatActivity {
 
 
 
-        int startMonth = 5;
-        int currentMonth = Calendar.getInstance().get(Calendar.MONTH) + 1;
 
-        String monthStrings[] = new String[currentMonth-startMonth+1];
-        int count=0;
-        for(int i=startMonth; i<=currentMonth; i++){
-            monthStrings[count] = getMonthString(i) + " " + Calendar.getInstance().get(Calendar.YEAR);
-            count++;
-        }
-
-        ArrayAdapter adapter = new ArrayAdapter<>(ActivityTestMarksAndAttendance.this, android.R.layout.simple_spinner_item, monthStrings);
+        ArrayAdapter adapter = new ArrayAdapter<>(ActivityTestMarksAndAttendance.this,
+                android.R.layout.simple_spinner_item,
+                monthStrings);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnDate.setAdapter(adapter);
+        spnDate.setSelection(Calendar.getInstance().get(Calendar.MONTH));
 
-
-    }
-
-    public static String getMonthString(int month){
-        String monthString="";
-        switch (month){
-            case 1:
-                monthString = "January";
-                break;
-            case 2:
-                monthString = "February";
-                break;
-            case 3:
-                monthString = "March";
-                break;
-            case 4:
-                monthString = "April";
-                break;
-            case 5:
-                monthString = "May";
-                break;
-            case 6:
-                monthString = "June";
-                break;
-            case 7:
-                monthString = "July";
-                break;
-            case 8:
-                monthString = "August";
-                break;
-            case 9:
-                monthString = "September";
-                break;
-            case 10:
-                monthString = "October";
-                break;
-            case 11:
-                monthString = "November";
-                break;
-            case 12:
-                monthString = "December";
-                break;
-        }
-        return monthString;
+        int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+        String year[] = {String.valueOf(currentYear-1), String.valueOf(currentYear), String.valueOf(currentYear+1)};
+        adapter = new ArrayAdapter<>(ActivityTestMarksAndAttendance.this,
+                android.R.layout.simple_spinner_item,
+                year);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spnYear.setAdapter(adapter);
+        spnYear.setSelection(1);
     }
 
     private String getMonthInt(String month){

@@ -3,9 +3,10 @@ package com.arktech.waqasansari.thescholarsinn;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -17,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ActivityTeachers extends AppCompatActivity {
-    ListView lstTeacher;
+    RecyclerView recyclerView;
 
     ProgressBar progressBar;
 
@@ -38,9 +39,14 @@ public class ActivityTeachers extends AppCompatActivity {
             }
         });
 
+        recyclerView = (RecyclerView) findViewById(R.id.teacherCardList);
+        if(recyclerView != null)
+            recyclerView.setHasFixedSize(true);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(ActivityTeachers.this);
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(layoutManager);
 
         progressBar = (ProgressBar) findViewById(R.id.progress);
-        lstTeacher = (ListView) findViewById(R.id.lstTeachers);
 
         new FetchTeachers().execute();
 
@@ -91,7 +97,7 @@ public class ActivityTeachers extends AppCompatActivity {
                     teachersList.add(teacher);
                 }
 
-                lstTeacher.setAdapter(new AdapterListTeachers(teachersList, ActivityTeachers.this));
+                recyclerView.setAdapter(new AdapterTeachers(teachersList));
                 progressBar.setVisibility(View.GONE);
 
             } catch (JSONException e) {

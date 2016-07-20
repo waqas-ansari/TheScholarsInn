@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#00000000"
+    android:layout_margin="10dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/text_info"
+        android:gravity="center"
+        android:textSize="23sp"
+        android:textColor="#FFF"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="3dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.1"
+                android:text="@string/text_phone"
+                android:textSize="17sp"
+                android:textColor="#FFF"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:layout_marginStart="3dp"
+                android:layout_marginLeft="3dp"
+                android:text="@string/phone_no"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#FFF"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="3dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.1"
+                android:text="@string/text_mobile"
+                android:textSize="17sp"
+                android:textColor="#FFF"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:layout_marginStart="3dp"
+                android:layout_marginLeft="3dp"
+                android:text="@string/mobile_no"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#FFF"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="3dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.1"
+                android:text="@string/text_email"
+                android:textSize="17sp"
+                android:textColor="#FFF"/>
+            <TextView
+                android:id="@+id/txtTopic"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:layout_marginStart="3dp"
+                android:layout_marginLeft="3dp"
+                android:text="@string/email_coaching"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#FFF"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="3dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.1"
+                android:text="@string/text_website"
+                android:textSize="17sp"
+                android:textColor="#FFF"/>
+            <TextView
+                android:id="@+id/txtTeacher"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:layout_marginStart="3dp"
+                android:layout_marginLeft="3dp"
+                android:text="@string/website"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#FFF"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
