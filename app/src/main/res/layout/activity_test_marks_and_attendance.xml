@@ -18,51 +18,67 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center">
-        <Spinner
-            android:id="@+id/spnDate"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_weight="1"
-            android:layout_margin="8dp"
-            android:padding="10dp"
-            android:textSize="15sp"
-            android:background="@drawable/shape_drop_down_spinner" />
-
-        <Spinner
-            android:id="@+id/spnYear"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_weight="0.8"
-            android:layout_margin="8dp"
-            android:padding="10dp"
-            android:textSize="15sp"
-            android:background="@drawable/shape_drop_down_spinner" />
-
-        <EditText
-            android:id="@+id/edtStudentId"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_weight="0.7"
-            android:layout_margin="8dp"
-            android:inputType="number"
-            android:padding="10dp"
-            android:textSize="15sp"
-            android:background="@drawable/bg_edit_texts"
-            android:imeOptions="actionDone"
-            android:hint="@string/text_id"/>
-
-        <ImageButton
-            android:id="@+id/btnShow"
-            android:layout_width="0dp"
-            android:layout_weight="0.5"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="8dp">
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:textAllCaps="false"
-            android:layout_gravity="center"
-            android:background="@drawable/bg_button"
-            android:src="@drawable/ic_arrow_forward_white_24dp"
-            android:textColor="#FFF"/>
+            android:orientation="horizontal"
+            android:gravity="center">
+            <Spinner
+                android:id="@+id/spnDate"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:layout_margin="8dp"
+                android:padding="10dp"
+                android:textSize="15sp"
+                android:background="@drawable/shape_drop_down_spinner" />
+
+            <Spinner
+                android:id="@+id/spnYear"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="0.8"
+                android:layout_margin="8dp"
+                android:padding="10dp"
+                android:textSize="15sp"
+                android:background="@drawable/shape_drop_down_spinner" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <EditText
+                android:id="@+id/edtStudentId"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="3"
+                android:layout_margin="8dp"
+                android:inputType="number"
+                android:padding="10dp"
+                android:textSize="15sp"
+                android:background="@drawable/bg_edit_texts"
+                android:imeOptions="actionDone"
+                android:hint="@string/text_id"/>
+
+            <ImageButton
+                android:id="@+id/btnShow"
+                android:layout_width="0dp"
+                android:layout_weight="0.6"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:textAllCaps="false"
+                android:layout_gravity="center"
+                android:background="@drawable/bg_button"
+                android:src="@drawable/ic_arrow_forward_white_24dp"
+                android:textColor="#FFF"/>
+        </LinearLayout>
+
 
     </LinearLayout>
 

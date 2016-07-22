@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/acion_contact_us"
+        android:title="@string/text_contact"
+        android:icon="@drawable/ic_date_range_white_24dp"/>
+
+    <item
+        android:id="@+id/action_about_us"
+        android:title="@string/text_about"
+        android:icon="@drawable/ic_announcement_white_24dp"/>
+
+</menu>

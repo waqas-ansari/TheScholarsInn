@@ -15,16 +15,12 @@ import android.widget.TextView;
  * Created by Linta Ansari on 7/5/2016.
  */
 public class CustomPagerAdapter extends PagerAdapter {
-    String textToBeDisplayed;
     Context context;
     ClassAnnouncement announcement;
-    ViewPager viewPager;
 
-    public CustomPagerAdapter(String textToBeDisplayed, ClassAnnouncement announcement, Context context, ViewPager viewPager){
-        this.textToBeDisplayed = textToBeDisplayed;
+    public CustomPagerAdapter(ClassAnnouncement announcement, Context context){
         this.context = context;
         this.announcement = announcement;
-        this.viewPager = viewPager;
     }
 
     @Override
@@ -50,14 +46,14 @@ public class CustomPagerAdapter extends PagerAdapter {
 
                 mainLayout.removeAllViews();
                 mainLayout.addView(tempView);
-                viewPager.setCurrentItem(0, true);
             }
 
         } else if (position == 1) {
             View tempView = ((Activity) context).getLayoutInflater().inflate(R.layout.view_advertisement, null);
             ImageView imageView = (ImageView) tempView.findViewById(R.id.imgAdvertisement);
+            TextView textView = (TextView) tempView.findViewById(R.id.txtAdvertisement);
 
-            new GetPicture(imageView).execute("http://thescholarsinn.com/img/Mobile.jpg");
+            new GetPicture(imageView, textView).execute("http://thescholarsinn.com/img/Mobile.jpg");
 
             mainLayout.removeAllViews();
             mainLayout.addView(tempView);

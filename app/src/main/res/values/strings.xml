@@ -15,7 +15,7 @@
     <string name="text_subject">Subject: </string>
     <string name="text_teacher">Teacher: </string>
     <string name="text_show">Show</string>
-    <string name="text_id">ID</string>
+    <string name="text_id">Student ID</string>
     <string name="text_out_of">out of</string>
     <string name="text_attendance">Test/Attendance</string>
     <string name="text_facebook">Facebook</string>
@@ -40,4 +40,13 @@
     <string name="website">www.thescholarsinn.com</string>
     <string name="text_advertisement">No new Advertisement</string>
     <string name="text_new_announcement">No new Announcement</string>
+    <string name="text_contact">Contact</string>
+    <string name="text_about">About Us</string>
+    <string name="text_about_us">The Scholars\' Inn Coaching System is the only system in Liaquatabad which is providing quality education to the students for almost one and a half decade. Strict test system, qualified and enthusiastic teachers and quality notes do great job in making our students secure good grades in examination. More than 70% of our students have secured A-One and A Grades by now in secondary and higher secondary examinations. Our computerized management software and Android App on Play Store also help students in analyzing themselves by generating reports, giving full information about students\' test progress, attendance, fee payment schedule and much more. We not only hep students to analyze themselves but also keep informing parents about th performance of their son/daughter in our system by means of Reports, SMS, telephone and Mobile Application.</string>
+    <string name="text_time_table_main">Time Table</string>
+    <string name="text_call">(021) 34920339</string>
+    <string name="text_message">0312-SCHOLAR</string>
+    <string name="text_address">800 Block 5 Liaqutabad (Sindhi Hotel) Karachi</string>
+    <string name="text_location">The Scholars\' Inn Coaching System\n24.9009124,67.0524547</string>
+    <string name="text_website_contact">www.thescholarsinn.com</string>
 </resources>

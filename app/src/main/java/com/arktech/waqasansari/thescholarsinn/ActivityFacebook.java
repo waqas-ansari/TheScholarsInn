@@ -74,6 +74,7 @@ public class ActivityFacebook extends AppCompatActivity {
             }
         });
 
+        /*
         String summary = "<div id=\"fb-root\"></div>\n" +
                 "<script>(function(d, s, id) {\n" +
                 "  var js, fjs = d.getElementsByTagName(s)[0];\n" +
@@ -83,7 +84,8 @@ public class ActivityFacebook extends AppCompatActivity {
                 "  fjs.parentNode.insertBefore(js, fjs);\n" +
                 "}(document, 'script', 'facebook-jssdk'));</script><div class=\"fb-page\" data-href=\"https://facebook.com/thescholarsinn\" data-tabs=\"timeline\" data-small-header=\"false\" data-adapt-container-width=\"true\" data-hide-cover=\"false\" data-show-facepile=\"false\"><blockquote cite=\"https://facebook.com/thescholarsinn\" class=\"fb-xfbml-parse-ignore\"><a href=\"https://facebook.com/thescholarsinn\">Scholars&#039; Inn Coaching System</a></blockquote></div>";
         facebookView.loadDataWithBaseURL("https://facebook.com", summary, "text/html", "UTF-8", null);
-        //tweetView.loadUrl("https://touch.facebook.com/thescholarsinn");
+        */
+        facebookView.loadUrl("https://touch.facebook.com/thescholarsinn");
 
     }
 

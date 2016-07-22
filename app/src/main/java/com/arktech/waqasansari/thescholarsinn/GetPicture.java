@@ -3,7 +3,9 @@ package com.arktech.waqasansari.thescholarsinn;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -14,9 +16,11 @@ import java.net.URL;
  */
 public class GetPicture extends AsyncTask<String, Integer, Bitmap> {
     ImageView imageView;
+    TextView textView;
 
-    public GetPicture(ImageView imageView){
+    public GetPicture(ImageView imageView, TextView textView){
         this.imageView = imageView;
+        this.textView = textView;
     }
 
     @Override
@@ -37,8 +41,12 @@ public class GetPicture extends AsyncTask<String, Integer, Bitmap> {
     @Override
     protected void onPostExecute(Bitmap bitmap) {
         super.onPostExecute(bitmap);
-        if(bitmap != null)
+        if(bitmap != null) {
             imageView.setImageBitmap(bitmap);
+            if(textView != null)
+                textView.setVisibility(View.GONE);
+        }
+
     }
 }
 

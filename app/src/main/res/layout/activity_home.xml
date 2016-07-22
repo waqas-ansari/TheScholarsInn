@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/rootLayout"
     android:orientation="vertical"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,243 +9,279 @@
     tools:context=".ActivityHome"
     android:background="?attr/colorPrimary">
 
-    <ImageView
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/grdButtons"
-        android:scaleType="centerInside"
-        android:src="@drawable/coaching_logo"
-        android:alpha="0.1"/>
-
-    <android.support.v4.view.ViewPager
-        android:id="@+id/viewPager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/grdButtons"/>
-
-    <LinearLayout
-        android:layout_above="@+id/grdButtons"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/linearLayout2">
-        <View
-            android:id="@+id/im1"
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:layout_margin="5dp"
-            android:background="@drawable/filled_circle"/>
-        <View
-            android:id="@+id/im2"
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:layout_margin="5dp"
-            android:background="@drawable/holo_circle"/>
-        <View
-            android:id="@+id/im3"
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:layout_margin="5dp"
-            android:background="@drawable/holo_circle"/>
-    </LinearLayout>
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <LinearLayout
-        android:id="@+id/grdButtons"
+    <android.support.v4.widget.DrawerLayout
+        android:layout_below="@+id/toolbar"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:orientation="vertical"
-        android:layout_alignParentBottom="true">
+        android:id="@+id/drawerLayout">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-
-            <RelativeLayout
-                android:id="@+id/btnAnn"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/btn_shape"
-                android:layout_margin="1dp"
-                android:gravity="center">
-                <ImageView
-                    android:id="@+id/imageView1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:src="@drawable/ic_announcement_white_24dp" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/imageView1"
-                    android:layout_centerHorizontal="true"
-                    android:textColor="#FFF"
-                    android:textSize="12sp"
-                    android:text="@string/text_announcement"/>
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/btnScheduledTests"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:background="@drawable/btn_shape"
-                android:layout_margin="1dp"
-                android:gravity="center">
-                <ImageView
-                    android:id="@+id/imageView2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:src="@drawable/ic_assignment_white_24dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_below="@+id/imageView2"
-                    android:textColor="#FFF"
-                    android:textSize="12sp"
-                    android:text="@string/text_scheduled_tests"/>
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/btnTestAndAttendance"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/btn_shape"
-                android:layout_margin="1dp"
-                android:gravity="center">
-                <ImageView
-                    android:id="@+id/imageView3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:src="@drawable/ic_assessment_white_24dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_below="@+id/imageView3"
-                    android:textColor="#FFF"
-                    android:textSize="12sp"
-                    android:gravity="center"
-                    android:text="@string/text_attendance"/>
-            </RelativeLayout>
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-
-            <RelativeLayout
-                android:id="@+id/btnTeachers"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/btn_shape"
-                android:layout_margin="1dp"
-                android:gravity="center">
-                <ImageView
-                    android:id="@+id/imageView4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:src="@drawable/ic_local_library_white_24dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_below="@+id/imageView4"
-                    android:textColor="#FFF"
-                    android:textSize="12sp"
-                    android:text="@string/text_teachers"/>
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/btnTwitter"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/btn_shape"
-                android:layout_margin="1dp"
-                android:gravity="center">
-                <ImageView
-                    android:id="@+id/imageView5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:src="@drawable/ic_twitter_white_24dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_below="@+id/imageView5"
-                    android:textColor="#FFF"
-                    android:textSize="12sp"
-                    android:text="@string/text_twitter"/>
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/btnFacebook"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/btn_shape"
-                android:layout_margin="1dp"
-                android:gravity="center">
-                <ImageView
-                    android:id="@+id/imageView6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:src="@drawable/ic_facebook_white_24dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_below="@+id/imageView6"
-                    android:textColor="#FFF"
-                    android:textSize="12sp"
-                    android:text="@string/text_facebook"/>
-            </RelativeLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/btnTimeTable"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.5"
-            android:gravity="center"
-            android:layout_margin="2dp"
-            android:clickable="true"
-            android:background="@drawable/btn_shape"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:id="@+id/containerView" >
 
             <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/grdButtons"
+                android:scaleType="centerInside"
+                android:src="@drawable/coaching_logo"
+                android:alpha="0.1"/>
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/viewPager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/grdButtons"/>
+
+            <LinearLayout
+                android:layout_above="@+id/grdButtons"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_date_range_white_24dp"/>
+                android:layout_marginBottom="10dp"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/linearLayout2">
+                <View
+                    android:id="@+id/im1"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/filled_circle"/>
+                <View
+                    android:id="@+id/im2"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/holo_circle"/>
+                <View
+                    android:id="@+id/im3"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/holo_circle"/>
+            </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#FFF"
-                android:textSize="12sp"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:text="Time Table"/>
-        </LinearLayout>
+            <LinearLayout
+                android:id="@+id/grdButtons"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:orientation="vertical"
+                android:layout_alignParentBottom="true">
 
-    </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:id="@+id/btnAnn"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/btn_shape"
+                        android:layout_margin="1dp"
+                        android:gravity="center">
+                        <ImageView
+                            android:id="@+id/imageView1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:src="@drawable/ic_announcement_white_24dp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/imageView1"
+                            android:layout_centerHorizontal="true"
+                            android:textColor="#FFF"
+                            android:textSize="12sp"
+                            android:text="@string/text_announcement"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/btnScheduledTests"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:background="@drawable/btn_shape"
+                        android:layout_margin="1dp"
+                        android:gravity="center">
+                        <ImageView
+                            android:id="@+id/imageView2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:src="@drawable/ic_assignment_white_24dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_below="@+id/imageView2"
+                            android:textColor="#FFF"
+                            android:textSize="12sp"
+                            android:text="@string/text_scheduled_tests"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/btnTestAndAttendance"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/btn_shape"
+                        android:layout_margin="1dp"
+                        android:gravity="center">
+                        <ImageView
+                            android:id="@+id/imageView3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:src="@drawable/ic_assessment_white_24dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_below="@+id/imageView3"
+                            android:textColor="#FFF"
+                            android:textSize="12sp"
+                            android:gravity="center"
+                            android:text="@string/text_attendance"/>
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:id="@+id/btnTeachers"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/btn_shape"
+                        android:layout_margin="1dp"
+                        android:gravity="center">
+                        <ImageView
+                            android:id="@+id/imageView4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:src="@drawable/ic_local_library_white_24dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_below="@+id/imageView4"
+                            android:textColor="#FFF"
+                            android:textSize="12sp"
+                            android:text="@string/text_teachers"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/btnTwitter"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/btn_shape"
+                        android:layout_margin="1dp"
+                        android:gravity="center">
+                        <ImageView
+                            android:id="@+id/imageView5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:src="@drawable/ic_twitter_white_24dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_below="@+id/imageView5"
+                            android:textColor="#FFF"
+                            android:textSize="12sp"
+                            android:text="@string/text_twitter"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/btnFacebook"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/btn_shape"
+                        android:layout_margin="1dp"
+                        android:gravity="center">
+                        <ImageView
+                            android:id="@+id/imageView6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:src="@drawable/ic_facebook_white_24dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_below="@+id/imageView6"
+                            android:textColor="#FFF"
+                            android:textSize="12sp"
+                            android:text="@string/text_facebook"/>
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/btnTimeTable"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.5"
+                    android:gravity="center"
+                    android:layout_margin="2dp"
+                    android:clickable="true"
+                    android:background="@drawable/btn_shape"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_date_range_white_24dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#FFF"
+                        android:textSize="12sp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:text="@string/text_time_table_main"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+        <android.support.design.widget.NavigationView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:id="@+id/navItems"
+            app:menu="@menu/drawer_menu"
+            app:headerLayout="@layout/nav_header_layout" />
+
+    </android.support.v4.widget.DrawerLayout>
+
 
 </RelativeLayout>

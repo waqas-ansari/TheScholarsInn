@@ -1,11 +1,27 @@
 package com.arktech.waqasansari.thescholarsinn;
 
+import android.Manifest;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.os.Build;
+import android.support.design.widget.NavigationView;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -13,9 +29,11 @@ import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 
 public class ActivityHome extends AppCompatActivity {
-    String text = "Text to be displayed";
     ClassAnnouncement announcement;
     View[] indicators = new View[3];
+
+    DrawerLayout mDrawerLayout;
+    NavigationView mNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,11 +41,43 @@ public class ActivityHome extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
+        mNavigationView = (NavigationView) findViewById(R.id.navItems) ;
+
+        mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem menuItem) {
+                mDrawerLayout.closeDrawers();
+                //click events of navigation view
+
+                if (menuItem.getItemId() == R.id.nav_contact_us)
+                    startActivity(new Intent(ActivityHome.this, ActivityContactUs.class));
+                else if (menuItem.getItemId() == R.id.nav_about_us)
+                    startActivity(new Intent(ActivityHome.this, ActivityAboutUs.class));
+
+                return false;
+            }
+
+        });
+
+        ActionBarDrawerToggle mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.app_name,
+                R.string.app_name);
+
+        mDrawerLayout.addDrawerListener(mDrawerToggle);
+
+        mDrawerToggle.syncState();
+
+
+
         Firebase.setAndroidContext(ActivityHome.this);
 
         final ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
-        if(viewPager != null)
-            viewPager.setAdapter(new CustomPagerAdapter(text, announcement, ActivityHome.this, viewPager));
+        if (viewPager != null)
+            viewPager.setAdapter(new CustomPagerAdapter(announcement, ActivityHome.this));
 
         Firebase reference = new Firebase("https://thescholarsinn.firebaseio.com/notification");
         reference.addValueEventListener(new ValueEventListener() {
@@ -35,14 +85,12 @@ public class ActivityHome extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     announcement = snapshot.getValue(ClassAnnouncement.class);
-                    if(announcement.getDisplayOnMain().equals("Yes")){
-                        viewPager.setAdapter(new CustomPagerAdapter(text, announcement, ActivityHome.this, viewPager));
+                    if (announcement.getDisplayOnMain().equals("Yes")) {
+                        viewPager.setAdapter(new CustomPagerAdapter(announcement, ActivityHome.this));
                         return;
-                    }
-
-                    else announcement = null;
+                    } else announcement = null;
                 }
-                viewPager.setAdapter(new CustomPagerAdapter(text, announcement, ActivityHome.this, viewPager));
+                viewPager.setAdapter(new CustomPagerAdapter(announcement, ActivityHome.this));
             }
 
             @Override
@@ -50,7 +98,6 @@ public class ActivityHome extends AppCompatActivity {
 
             }
         });
-
 
 
         indicators[0] = findViewById(R.id.im1);
@@ -65,10 +112,16 @@ public class ActivityHome extends AppCompatActivity {
 
             @Override
             public void onPageSelected(int position) {
-                for (int i=0; i<indicators.length; i++){
-                    if(i == position)
-                        indicators[i].setBackground(ContextCompat.getDrawable(ActivityHome.this, R.drawable.filled_circle));
-                    else indicators[i].setBackground(ContextCompat.getDrawable(ActivityHome.this, R.drawable.holo_circle));
+                for (int i = 0; i < indicators.length; i++) {
+                    if (i == position)
+                        if(Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.JELLY_BEAN)
+                            indicators[i].setBackgroundDrawable(ContextCompat.getDrawable(ActivityHome.this, R.drawable.filled_circle));
+                        else indicators[i].setBackground(ContextCompat.getDrawable(ActivityHome.this, R.drawable.filled_circle));
+                    else {
+                        if(Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.JELLY_BEAN)
+                            indicators[i].setBackgroundDrawable(ContextCompat.getDrawable(ActivityHome.this, R.drawable.holo_circle));
+                        else indicators[i].setBackground(ContextCompat.getDrawable(ActivityHome.this, R.drawable.holo_circle));
+                    }
                 }
             }
 
@@ -128,5 +181,14 @@ public class ActivityHome extends AppCompatActivity {
             }
         });
 
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        if (mDrawerLayout.isDrawerOpen(GravityCompat.START))
+            mDrawerLayout.closeDrawer(GravityCompat.START);
+        else
+            super.onBackPressed();
     }
 }
