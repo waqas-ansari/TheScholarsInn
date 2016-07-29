@@ -138,7 +138,7 @@ public class ActivityAnnouncement extends AppCompatActivity {
             @Override
             public void onCancelled(FirebaseError firebaseError) {
                 progressBar.setVisibility(View.GONE);
-                Toast.makeText(ActivityAnnouncement.this, firebaseError.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(ActivityAnnouncement.this, "There is something wrong with your Internet Connection", Toast.LENGTH_SHORT).show();
             }
         });
 

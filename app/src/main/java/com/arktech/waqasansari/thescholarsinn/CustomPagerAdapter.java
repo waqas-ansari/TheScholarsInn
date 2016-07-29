@@ -3,7 +3,6 @@ package com.arktech.waqasansari.thescholarsinn;
 import android.app.Activity;
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,7 +58,7 @@ public class CustomPagerAdapter extends PagerAdapter {
             mainLayout.addView(tempView);
 
         } else if (position == 2) {
-            View tempView = ((Activity) context).getLayoutInflater().inflate(R.layout.contact_info, null);
+            View tempView = ((Activity) context).getLayoutInflater().inflate(R.layout.view_features, null);
             mainLayout.removeAllViews();
             mainLayout.addView(tempView);
         }

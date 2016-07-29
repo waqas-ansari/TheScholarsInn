@@ -80,7 +80,7 @@ public class FragmentTestMarks extends Fragment {
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(getContext(), "Error: " + e.toString(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "There is something wrong with your Internet Connection", Toast.LENGTH_SHORT).show();
                         progressBar.setVisibility(View.GONE);
                     }
                 });
@@ -90,6 +90,7 @@ public class FragmentTestMarks extends Fragment {
 
         @Override
         protected void onPostExecute(String s) {
+            progressBar.setVisibility(View.GONE);
             super.onPostExecute(s);
             if(! s.equals("error")){
                 List<ClassTestMarks> testMarksList = new ArrayList<>();
@@ -188,21 +189,15 @@ public class FragmentTestMarks extends Fragment {
                         lstTestMarks.addHeaderView(view);
 
                         lstTestMarks.setAdapter(new AdapterListTestMarks(subjectWiseResults, detailedLists, getContext()));
-                        progressBar.setVisibility(View.GONE);
 
-                    } else {
-                        Toast.makeText(getContext(), "No result found\nInvalid ID or Date", Toast.LENGTH_SHORT).show();
-                        progressBar.setVisibility(View.GONE);
-                    }
+
+                    } else Toast.makeText(getContext(), "No result available for selected Date/Student ID", Toast.LENGTH_SHORT).show();
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    progressBar.setVisibility(View.GONE);
-                }
-            } else {
-                Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
-                progressBar.setVisibility(View.GONE);
-            }
+                    Toast.makeText(getContext(), "Something went wrong.\nTry again", Toast.LENGTH_SHORT).show();
 
+                }
+            }
         }
     }
 

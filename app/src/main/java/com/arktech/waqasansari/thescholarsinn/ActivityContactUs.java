@@ -40,6 +40,7 @@ public class ActivityContactUs extends AppCompatActivity {
         CollapsingToolbarLayout toolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsingToolbar);
         if (toolbarLayout != null) {
             toolbarLayout.setExpandedTitleColor(Color.TRANSPARENT);
+            toolbarLayout.setCollapsedTitleTextColor(Color.WHITE);
         }
 
         AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.appBar);
@@ -83,5 +84,14 @@ public class ActivityContactUs extends AppCompatActivity {
         String uri = "https://www.google.com/maps/place/The+Scholars'+Inn+Coaching+System/@24.9009124,67.0524547,18z/data=!4m5!3m4!1s0x0:0xbba8cdd28fab35f6!8m2!3d24.9007931!4d67.0535651";
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
         startActivity(intent);
+    }
+    public void emailClick(View view) {
+        Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
+
+        emailIntent.setType("plain/text");
+        emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"info@thescholarsinn.com"});
+        emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Query");
+
+        startActivity(Intent.createChooser(emailIntent, "Send mail..."));
     }
 }

@@ -15,6 +15,15 @@
         android:textSize="25sp"
         android:textColor="#FFF"/>
 
+    <TextView
+        android:id="@+id/txtDay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="June 16, 2016"
+        android:textColor="#FFF"
+        android:textStyle="italic"
+        android:textSize="17sp"/>
+
     <RelativeLayout
         android:id="@+id/layout"
         android:layout_width="match_parent"
@@ -30,17 +39,7 @@
             android:textColor="#FFF"
             android:textAllCaps="true"
             android:textSize="20sp"/>
-        <TextView
-            android:id="@+id/txtDay"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="June 16, 2016"
-            android:textColor="#FFF"
-            android:layout_above="@+id/txtDescription"
-            android:layout_alignRight="@+id/tmp"
-            android:layout_alignEnd="@+id/tmp"
-            android:textStyle="italic"
-            android:textSize="17sp"/>
+
         <View
             android:id="@+id/tmp"
             android:layout_below="@+id/txtHeading"

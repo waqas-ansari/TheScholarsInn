@@ -69,7 +69,7 @@
                     android:layout_height="match_parent"
                     android:padding="20dp"
                     android:text="@string/text_call"
-                    android:textSize="20sp"
+                    android:textSize="@dimen/feature_text_size"
                     android:layout_gravity="center_vertical"
                     android:drawablePadding="30dp"
                     android:drawableStart="@drawable/ic_call_black_24dp"
@@ -88,7 +88,7 @@
                     android:layout_height="match_parent"
                     android:padding="20dp"
                     android:text="@string/text_message"
-                    android:textSize="20sp"
+                    android:textSize="@dimen/feature_text_size"
                     android:layout_gravity="center_vertical"
                     android:drawablePadding="30dp"
                     android:drawableStart="@drawable/ic_chat_black_24dp"
@@ -106,7 +106,7 @@
                     android:layout_height="match_parent"
                     android:padding="20dp"
                     android:text="@string/text_address"
-                    android:textSize="20sp"
+                    android:textSize="@dimen/feature_text_size"
                     android:layout_gravity="center_vertical"
                     android:drawablePadding="20dp"
                     android:drawableStart="@drawable/ic_home_black_24dp"
@@ -125,7 +125,7 @@
                     android:layout_height="match_parent"
                     android:padding="20dp"
                     android:text="@string/text_website_contact"
-                    android:textSize="20sp"
+                    android:textSize="@dimen/feature_text_size"
                     android:layout_gravity="center_vertical"
                     android:drawablePadding="20dp"
                     android:drawableStart="@drawable/ic_web_black_24dp"
@@ -144,11 +144,30 @@
                     android:layout_height="match_parent"
                     android:padding="20dp"
                     android:text="@string/text_location"
-                    android:textSize="20sp"
+                    android:textSize="@dimen/feature_text_size"
                     android:layout_gravity="center_vertical"
                     android:drawablePadding="20dp"
                     android:drawableStart="@drawable/ic_location_on_black_24dp"
                     android:drawableLeft="@drawable/ic_location_on_black_24dp"/>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:onClick="emailClick">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="20dp"
+                    android:text="@string/text_email_address"
+                    android:textSize="@dimen/feature_text_size"
+                    android:layout_gravity="center_vertical"
+                    android:drawablePadding="20dp"
+                    android:drawableStart="@drawable/ic_email_black_24dp"
+                    android:drawableLeft="@drawable/ic_email_black_24dp"/>
 
             </android.support.v7.widget.CardView>
 

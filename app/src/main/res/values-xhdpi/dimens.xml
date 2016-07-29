@@ -1,0 +1,4 @@
+<resources>
+    <dimen name="feature_text_size">18sp</dimen>
+    <dimen name="heading_text_size">23sp</dimen>
+</resources>

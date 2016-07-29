@@ -1,11 +1,6 @@
 <resources>
     <string name="app_name">The Scholars\' Inn</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="drawer_open">Open</string>
-    <string name="drawer_close">Close</string>
-
     <string name="login_text">Logged in as:</string>
     <string name="page_name">Scholars\' Inn Coaching System</string>
     <string name="text_class">Class: </string>
@@ -30,7 +25,7 @@
     <string name="text_new_ann">New Announcement</string>
     <string name="text_test_days">Test Days</string>
     <string name="text_time_table">Time Table</string>
-    <string name="text_info">Contact Information</string>
+    <string name="text_feature">Features</string>
     <string name="text_phone">Phone:</string>
     <string name="phone_no">021 34920339</string>
     <string name="text_mobile">Mobile:</string>
@@ -42,11 +37,25 @@
     <string name="text_new_announcement">No new Announcement</string>
     <string name="text_contact">Contact</string>
     <string name="text_about">About Us</string>
-    <string name="text_about_us">The Scholars\' Inn Coaching System is the only system in Liaquatabad which is providing quality education to the students for almost one and a half decade. Strict test system, qualified and enthusiastic teachers and quality notes do great job in making our students secure good grades in examination. More than 70% of our students have secured A-One and A Grades by now in secondary and higher secondary examinations. Our computerized management software and Android App on Play Store also help students in analyzing themselves by generating reports, giving full information about students\' test progress, attendance, fee payment schedule and much more. We not only hep students to analyze themselves but also keep informing parents about th performance of their son/daughter in our system by means of Reports, SMS, telephone and Mobile Application.</string>
+    <string name="text_about_us">The Scholars\' Inn Coaching System is the only system in Liaquatabad which is providing quality education to the students for almost one and a half decade. Strict test system, qualified and enthusiastic teachers and quality notes do great job in making our students secure good grades in examination. More than 70% of our students have secured A-One and A Grades by now in secondary and higher secondary examinations. Our computerized management software and Android App on Play Store also help students in analyzing themselves by generating reports, giving full information about students\' test progress, attendance, fee payment schedule and much more. We not only help students to analyze themselves but also keep informing parents about the performance of their son/daughter in our system by means of Reports, SMS, telephone and Mobile Application.</string>
     <string name="text_time_table_main">Time Table</string>
     <string name="text_call">(021) 34920339</string>
     <string name="text_message">0312-SCHOLAR</string>
     <string name="text_address">800 Block 5 Liaqutabad (Sindhi Hotel) Karachi</string>
     <string name="text_location">The Scholars\' Inn Coaching System\n24.9009124,67.0524547</string>
     <string name="text_website_contact">www.thescholarsinn.com</string>
+    <string name="text_coaching_info">
+        \t* Computerized Analysis of each student\n
+        \t* Strict Weekly Test System\n
+        \t* Weekly SMS Reporting\n
+        \t* Course completion in time\n
+        \t* Quality Notes\n
+        \t* Experienced and qualified Teachers\n
+        \t* Website\n
+        \t* Stand-by Generator\n
+        \t* Mutimedia Projector\n
+        \t* Android Application on Play Store\n
+        \t* Past year papers (1985 and onwards)\n\n
+        and much more for the students of Scholars\' Inn</string>
+    <string name="text_email_address">info@thescholarsinn.com</string>
 </resources>

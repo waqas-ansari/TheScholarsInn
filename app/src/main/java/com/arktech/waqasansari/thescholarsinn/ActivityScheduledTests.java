@@ -79,7 +79,7 @@ public class ActivityScheduledTests extends AppCompatActivity {
                 String temp = sdf.format(myCalendar.getTime());
                 try {
                     if(checkIfGreater(temp))
-                        Toast.makeText(ActivityScheduledTests.this, "Wrong Date", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ActivityScheduledTests.this, "There are no tests scheduled on " + temp, Toast.LENGTH_SHORT).show();
                     else {
                         myCalendar.add(Calendar.DATE, -1);
                         updateLabel(myCalendar);
@@ -155,7 +155,7 @@ public class ActivityScheduledTests extends AppCompatActivity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                Toast.makeText(ActivityScheduledTests.this, "No test on " + date, Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ActivityScheduledTests.this, "There are no tests scheduled on " + date, Toast.LENGTH_SHORT).show();
                             }
                         });
                         Date tmp = format.parse(date);
@@ -168,7 +168,7 @@ public class ActivityScheduledTests extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(ActivityScheduledTests.this, "Error: " + e.toString(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ActivityScheduledTests.this, "There is something wrong with your Internet Connection.", Toast.LENGTH_SHORT).show();
                             progressBar.setVisibility(View.GONE);
                         }
                     });
@@ -182,62 +182,62 @@ public class ActivityScheduledTests extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            SimpleDateFormat tempFormat = new SimpleDateFormat("EEE, MMM dd, yyyy", Locale.getDefault());
-            calendar = Calendar.getInstance();
-            if(date.equals(format.format(calendar.getTime()))) {
-                txtDay.setText("Today");
-                txtTestDate.setText(tempFormat.format(calendar.getTime()));
-            }
-            calendar.add(Calendar.DATE, 1);
-            if(date.equals(format.format(calendar.getTime()))) {
-                txtDay.setText("Tomorrow");
-                txtTestDate.setText(tempFormat.format(calendar.getTime()));
-            } else {
-                try {
-                    tempFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
-                    Date d = tempFormat.parse(date);
-                    tempFormat = new SimpleDateFormat("EEEE", Locale.getDefault());
-                    String dd = tempFormat.format(d);
-                    if(!txtDay.getText().toString().equals("Today"))
-                        txtDay.setText(dd);
-                    tempFormat = new SimpleDateFormat("EEE, MMM  dd, yyyy", Locale.getDefault());
-                    dd = tempFormat.format(d);
-                    txtTestDate.setText(dd);
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                    Toast.makeText(ActivityScheduledTests.this, e.toString(), Toast.LENGTH_SHORT).show();
-                    progressBar.setVisibility(View.GONE);
+            progressBar.setVisibility(View.GONE);
+            if(!s.equals("error")) {
+                SimpleDateFormat tempFormat = new SimpleDateFormat("EEE, MMM dd, yyyy", Locale.getDefault());
+                calendar = Calendar.getInstance();
+                if(date.equals(format.format(calendar.getTime()))) {
+                    txtDay.setText("Today");
+                    txtTestDate.setText(tempFormat.format(calendar.getTime()));
                 }
-
-            }
-
-            List<ClassScheduledTests> testsList = new ArrayList<>();
-            ClassScheduledTests tests;
-
-            try {
-                JSONArray jsonArray = new JSONArray(s);
-                if(jsonArray.length() > 1){
-                    JSONObject object;
-                    for(int i=0; i<jsonArray.length(); i++){
-                        object = jsonArray.getJSONObject(i);
-                        tests = new ClassScheduledTests();
-                        tests.setClassName(object.getString("ClassName"));
-                        tests.setSubject(object.getString("Subject"));
-                        tests.setTeacher(object.getString("Teacher"));
-                        tests.setTopic(object.getString("Topic"));
-                        testsList.add(tests);
+                calendar.add(Calendar.DATE, 1);
+                if(date.equals(format.format(calendar.getTime()))) {
+                    txtDay.setText("Tomorrow");
+                    txtTestDate.setText(tempFormat.format(calendar.getTime()));
+                } else {
+                    try {
+                        tempFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+                        Date d = tempFormat.parse(date);
+                        tempFormat = new SimpleDateFormat("EEEE", Locale.getDefault());
+                        String dd = tempFormat.format(d);
+                        if(!txtDay.getText().toString().equals("Today"))
+                            txtDay.setText(dd);
+                        tempFormat = new SimpleDateFormat("EEE, MMM  dd, yyyy", Locale.getDefault());
+                        dd = tempFormat.format(d);
+                        txtTestDate.setText(dd);
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                        Toast.makeText(ActivityScheduledTests.this, "There is something wrong.\nTry again", Toast.LENGTH_SHORT).show();
                     }
 
-                    lstTests.setAdapter(new AdapterListScheduledTests(testsList, ActivityScheduledTests.this));
                 }
-                progressBar.setVisibility(View.GONE);
 
-            } catch (JSONException e) {
-                e.printStackTrace();
-                Toast.makeText(ActivityScheduledTests.this, e.toString(), Toast.LENGTH_SHORT).show();
-                progressBar.setVisibility(View.GONE);
+                List<ClassScheduledTests> testsList = new ArrayList<>();
+                ClassScheduledTests tests;
+
+                try {
+                    JSONArray jsonArray = new JSONArray(s);
+                    if(jsonArray.length() > 1){
+                        JSONObject object;
+                        for(int i=0; i<jsonArray.length(); i++){
+                            object = jsonArray.getJSONObject(i);
+                            tests = new ClassScheduledTests();
+                            tests.setClassName(object.getString("ClassName"));
+                            tests.setSubject(object.getString("Subject"));
+                            tests.setTeacher(object.getString("Teacher"));
+                            tests.setTopic(object.getString("Topic"));
+                            testsList.add(tests);
+                        }
+
+                        lstTests.setAdapter(new AdapterListScheduledTests(testsList, ActivityScheduledTests.this));
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Toast.makeText(ActivityScheduledTests.this, "Something went wrong.\nTry again", Toast.LENGTH_SHORT).show();
+                }
             }
-            progressBar.setVisibility(View.GONE);
+
         }
     }
 }

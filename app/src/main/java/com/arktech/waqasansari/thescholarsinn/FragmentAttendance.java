@@ -85,7 +85,7 @@ public class FragmentAttendance extends Fragment {
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(getContext(), "Error: " + e.toString(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "There is something wrong with your Internet Connection", Toast.LENGTH_SHORT).show();
                         progressBar.setVisibility(View.GONE);
                     }
                 });
@@ -96,6 +96,7 @@ public class FragmentAttendance extends Fragment {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
+            progressBar.setVisibility(View.GONE);
             if(! s.equals("error")) {
 
                 View view = inflater.inflate(R.layout.view_attendance, null);
@@ -163,18 +164,11 @@ public class FragmentAttendance extends Fragment {
 
                         scrollAttendance.removeAllViews();
                         scrollAttendance.addView(view);
-                        progressBar.setVisibility(View.GONE);
-                    } else {
-                        Toast.makeText(getContext(), "No result found\nInvalid ID or Date", Toast.LENGTH_SHORT).show();
-                        progressBar.setVisibility(View.GONE);
-                    }
+                    } else Toast.makeText(getContext(), "No result available for selected Date/Student ID", Toast.LENGTH_SHORT).show();
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    progressBar.setVisibility(View.GONE);
+                    Toast.makeText(getContext(), "Something went wrong.\nTry again", Toast.LENGTH_SHORT).show();
                 }
-            } else {
-                Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
-                progressBar.setVisibility(View.GONE);
             }
         }
     }

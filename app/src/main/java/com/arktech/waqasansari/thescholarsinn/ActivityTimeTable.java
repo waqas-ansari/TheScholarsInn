@@ -136,7 +136,7 @@ public class ActivityTimeTable extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(ActivityTimeTable.this, "Error: " + e.toString(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ActivityTimeTable.this, "There is something wrong with your Internet Connection", Toast.LENGTH_SHORT).show();
                         progressBar.setVisibility(View.GONE);
                     }
                 });
@@ -147,6 +147,7 @@ public class ActivityTimeTable extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
+            progressBar.setVisibility(View.GONE);
             if(! s.equals("error")) {
                 try {
                     JSONArray jsonArray = new JSONArray(s);
@@ -169,13 +170,11 @@ public class ActivityTimeTable extends AppCompatActivity {
                                 classList);
                         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                         spnClass.setAdapter(adapter);
-                        progressBar.setVisibility(View.GONE);
 
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    progressBar.setVisibility(View.GONE);
-                    Toast.makeText(ActivityTimeTable.this, "Error: " + e.toString(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ActivityTimeTable.this, "Something went wrong.\nTry again", Toast.LENGTH_SHORT).show();
                 }
             }
         }

@@ -38,6 +38,7 @@ public class ActivityAboutUs extends AppCompatActivity {
         CollapsingToolbarLayout toolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsingToolbar);
         if (toolbarLayout != null) {
             toolbarLayout.setExpandedTitleColor(Color.TRANSPARENT);
+            toolbarLayout.setCollapsedTitleTextColor(Color.WHITE);
         }
 
         AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.appBar);

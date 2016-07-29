@@ -71,7 +71,7 @@ public class ActivityTeachers extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(ActivityTeachers.this, "Error: " + e.toString(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ActivityTeachers.this, "There is something wrong with your Internet Connection.", Toast.LENGTH_SHORT).show();
                         progressBar.setVisibility(View.GONE);
                     }
                 });
@@ -82,28 +82,31 @@ public class ActivityTeachers extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            List<ClassTeachers> teachersList = new ArrayList<>();
-            ClassTeachers teacher;
+            progressBar.setVisibility(View.GONE);
+            if(! s.equals("error")) {
+                List<ClassTeachers> teachersList = new ArrayList<>();
+                ClassTeachers teacher;
 
-            try {
-                JSONArray  jsonArray = new JSONArray(s);
-                JSONObject object;
-                for(int i=0; i<jsonArray.length(); i++){
-                    object = jsonArray.getJSONObject(i);
-                    teacher = new ClassTeachers();
-                    teacher.setTeacherName(object.getString("TeacherName"));
-                    teacher.setSubject(object.getString("MainSubject"));
-                    teacher.setQualification(object.getString("Qualification"));
-                    teachersList.add(teacher);
+                try {
+                    JSONArray  jsonArray = new JSONArray(s);
+                    JSONObject object;
+                    for(int i=0; i<jsonArray.length(); i++){
+                        object = jsonArray.getJSONObject(i);
+                        teacher = new ClassTeachers();
+                        teacher.setTeacherName(object.getString("TeacherName"));
+                        teacher.setSubject(object.getString("MainSubject"));
+                        teacher.setQualification(object.getString("Qualification"));
+                        teachersList.add(teacher);
+                    }
+
+                    recyclerView.setAdapter(new AdapterTeachers(teachersList));
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Toast.makeText(ActivityTeachers.this, "Something went wrong.\nTry again", Toast.LENGTH_SHORT).show();
                 }
-
-                recyclerView.setAdapter(new AdapterTeachers(teachersList));
-                progressBar.setVisibility(View.GONE);
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-                progressBar.setVisibility(View.GONE);
             }
+
         }
     }
 }

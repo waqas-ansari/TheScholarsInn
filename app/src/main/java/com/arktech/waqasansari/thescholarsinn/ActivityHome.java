@@ -21,7 +21,9 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -40,6 +42,12 @@ public class ActivityHome extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        ImageView imgCoachingLogo = (ImageView) findViewById(R.id.imgCoachingLogo);
+        if(imgCoachingLogo != null) {
+            if(Build.VERSION.SDK_INT < Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+                setAlphaForView(imgCoachingLogo, 0.1f);
+            }
+        }
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -183,6 +191,13 @@ public class ActivityHome extends AppCompatActivity {
 
     }
 
+
+    private void setAlphaForView(View v, float alpha) {
+        AlphaAnimation animation = new AlphaAnimation(alpha, alpha);
+        animation.setDuration(0);
+        animation.setFillAfter(true);
+        v.startAnimation(animation);
+    }
 
     @Override
     public void onBackPressed() {
