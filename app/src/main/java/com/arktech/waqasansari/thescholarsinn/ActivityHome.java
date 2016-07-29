@@ -87,7 +87,7 @@ public class ActivityHome extends AppCompatActivity {
         if (viewPager != null)
             viewPager.setAdapter(new CustomPagerAdapter(announcement, ActivityHome.this));
 
-        Firebase reference = new Firebase("https://thescholarsinn.firebaseio.com/notification");
+        Firebase reference = new Firebase("https://the-scholars-inn.firebaseio.com/notification");
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

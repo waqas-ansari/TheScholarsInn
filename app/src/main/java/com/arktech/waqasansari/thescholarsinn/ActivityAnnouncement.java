@@ -86,7 +86,7 @@ public class ActivityAnnouncement extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
 
 
-        String firebaseUrl = "https://thescholarsinn.firebaseio.com/";
+        String firebaseUrl = "https://the-scholars-inn.firebaseio.com/";
         reference = new Firebase(firebaseUrl).child("notification");
 
 
