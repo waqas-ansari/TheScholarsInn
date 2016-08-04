@@ -5,6 +5,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.media.RingtoneManager;
+import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.app.AppCompatActivity;
@@ -28,6 +29,7 @@ import org.json.JSONObject;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
@@ -49,6 +51,7 @@ public class ActivityAnnouncement extends AppCompatActivity {
 
     ProgressBar progressBar;
 
+
     //Firebase
     Firebase reference;
 
@@ -57,12 +60,14 @@ public class ActivityAnnouncement extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_announcement);
 
+        Firebase.setAndroidContext(this);
+
         progressBar = (ProgressBar) findViewById(R.id.progress);
         if(progressBar != null)
             progressBar.setVisibility(View.VISIBLE);
 
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         if(getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -89,27 +94,21 @@ public class ActivityAnnouncement extends AppCompatActivity {
         String firebaseUrl = "https://the-scholars-inn.firebaseio.com/";
         reference = new Firebase(firebaseUrl).child("notification");
 
-
         reference.addValueEventListener(new ValueEventListener() {
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-
                 List<ClassAnnouncement> announcementList = new ArrayList<>();
                 ClassAnnouncement announcement;
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     announcement = snapshot.getValue(ClassAnnouncement.class);
-                    if(announcement.getIsPushed().equals("true")){
-                        if(announcement.getNotified().equals("false")){
-                            announcement.setNotified("true");
-                            showNotification(announcement.getTitle(), announcement.getMessage());
-                            Map<String, Object> param = new HashMap<>();
-                            param.put("notified", "true");
-                            reference.child(snapshot.getKey()).updateChildren(param);
-                        }
-                        announcementList.add(announcement);
+                    announcementList.add(announcement);
+                    if(announcement.getNotified().equals("false")) {
+                        sendNotification(announcement.getTitle(), announcement.getMessage());
+                        Map<String, Object> map = new HashMap<>();
+                        map.put("notified", "true");
+                        reference.child(snapshot.getKey()).updateChildren(map);
                     }
-
                 }
 
                 Collections.sort(announcementList, new Comparator<ClassAnnouncement>() {
@@ -145,25 +144,30 @@ public class ActivityAnnouncement extends AppCompatActivity {
 
     }
 
-    private void showNotification(String title, String message){
-        //Creating Notification Builder
-        notification = new NotificationCompat.Builder(ActivityAnnouncement.this)
+    private void sendNotification(String title, String message) {
+        Intent resultIntent = new Intent(ActivityAnnouncement.this, ActivityShowNotification.class);
+        resultIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        resultIntent.putExtra("title", title);
+        resultIntent.putExtra("message", message);
+        SimpleDateFormat format = new SimpleDateFormat("EEEE, MMM dd, yyyy", Locale.getDefault());
+        String date = format.format(Calendar.getInstance().getTime());
+        resultIntent.putExtra("date", date);
+        PendingIntent pendingIntent = PendingIntent.getActivity(ActivityAnnouncement.this, 0, resultIntent,
+                PendingIntent.FLAG_ONE_SHOT);
+
+        Uri defaultSoundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(ActivityAnnouncement.this)
+                .setSmallIcon(R.mipmap.ic_launcher)
                 .setContentTitle(title)
                 .setContentText(message)
                 .setTicker("New Notification Alert!")
-                .setSmallIcon(R.drawable.ic_stat_coaching_logo)
-                .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
-                .setAutoCancel(true);
+                .setAutoCancel(true)
+                .setSound(defaultSoundUri)
+                .setContentIntent(pendingIntent);
 
-        //Creating new Stack Builder
-        stackBuilder = TaskStackBuilder.create(ActivityAnnouncement.this);
-        stackBuilder.addParentStack(ActivityAnnouncement.class);
-        //Intent which is opened when notification is clicked
-        resultIntent = new Intent(ActivityAnnouncement.this, ActivityAnnouncement.class);
-        stackBuilder.addNextIntent(resultIntent);
-        pIntent =  stackBuilder.getPendingIntent(0,PendingIntent.FLAG_UPDATE_CURRENT);
-        notification.setContentIntent(pIntent);
-        manager =(NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        manager.notify(0, notification.build());
+        NotificationManager notificationManager =
+                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+        notificationManager.notify(0, notificationBuilder.build());
     }
 }

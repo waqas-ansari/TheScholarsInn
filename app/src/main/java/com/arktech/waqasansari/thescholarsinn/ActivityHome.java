@@ -1,34 +1,33 @@
 package com.arktech.waqasansari.thescholarsinn;
 
-import android.Manifest;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.net.Uri;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
 
 public class ActivityHome extends AppCompatActivity {
     ClassAnnouncement announcement;
@@ -37,10 +36,51 @@ public class ActivityHome extends AppCompatActivity {
     DrawerLayout mDrawerLayout;
     NavigationView mNavigationView;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+
+        if (getIntent().getExtras() != null) {
+            Intent intent = new Intent(ActivityHome.this, ActivityShowNotification.class);
+            for (String key : getIntent().getExtras().keySet()) {
+                String value = getIntent().getExtras().getString(key);
+                intent.putExtra(key, value);
+            }
+            SimpleDateFormat format = new SimpleDateFormat("EEEE, MMM dd, yyyy", Locale.getDefault());
+            String date = format.format(Calendar.getInstance().getTime());
+            intent.putExtra("date", date);
+            if(intent.hasExtra("title") && intent.hasExtra("message"))
+                startActivity(intent);
+        }
+
+        Firebase.setAndroidContext(this);
+
+        final ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
+        if (viewPager != null)
+            viewPager.setAdapter(new CustomPagerAdapter(announcement, ActivityHome.this));
+
+        Firebase reference = new Firebase("https://the-scholars-inn.firebaseio.com/notification");
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    announcement = snapshot.getValue(ClassAnnouncement.class);
+                    if (announcement.getDisplayOnMain().equals("Yes")) {
+                        viewPager.setAdapter(new CustomPagerAdapter(announcement, ActivityHome.this));
+                        return;
+                    } else announcement = null;
+                }
+                viewPager.setAdapter(new CustomPagerAdapter(announcement, ActivityHome.this));
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
 
         ImageView imgCoachingLogo = (ImageView) findViewById(R.id.imgCoachingLogo);
         if(imgCoachingLogo != null) {
@@ -79,33 +119,6 @@ public class ActivityHome extends AppCompatActivity {
 
         mDrawerToggle.syncState();
 
-
-
-        Firebase.setAndroidContext(ActivityHome.this);
-
-        final ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
-        if (viewPager != null)
-            viewPager.setAdapter(new CustomPagerAdapter(announcement, ActivityHome.this));
-
-        Firebase reference = new Firebase("https://the-scholars-inn.firebaseio.com/notification");
-        reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    announcement = snapshot.getValue(ClassAnnouncement.class);
-                    if (announcement.getDisplayOnMain().equals("Yes")) {
-                        viewPager.setAdapter(new CustomPagerAdapter(announcement, ActivityHome.this));
-                        return;
-                    } else announcement = null;
-                }
-                viewPager.setAdapter(new CustomPagerAdapter(announcement, ActivityHome.this));
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-
-            }
-        });
 
 
         indicators[0] = findViewById(R.id.im1);
@@ -206,4 +219,5 @@ public class ActivityHome extends AppCompatActivity {
         else
             super.onBackPressed();
     }
+
 }

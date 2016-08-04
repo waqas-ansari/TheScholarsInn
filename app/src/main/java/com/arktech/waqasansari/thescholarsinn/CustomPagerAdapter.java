@@ -36,12 +36,10 @@ public class CustomPagerAdapter extends PagerAdapter {
 
             TextView txtHeading = (TextView) tempView.findViewById(R.id.txtHeading);
             TextView txtText = (TextView) tempView.findViewById(R.id.txtDescription);
-            TextView txtDay = (TextView) tempView.findViewById(R.id.txtDay);
 
             if(announcement != null) {
                 txtHeading.setText(announcement.getTitle());
                 txtText.setText(announcement.getMessage());
-                txtDay.setText(announcement.getDate());
 
                 mainLayout.removeAllViews();
                 mainLayout.addView(tempView);

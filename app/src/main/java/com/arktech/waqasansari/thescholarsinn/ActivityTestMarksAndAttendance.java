@@ -1,5 +1,6 @@
 package com.arktech.waqasansari.thescholarsinn;
 
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.*;
 import android.support.v7.app.AppCompatActivity;
@@ -19,7 +20,7 @@ public class ActivityTestMarksAndAttendance extends AppCompatActivity {
     Spinner spnYear;
     EditText edtStudentId;
 
-    ImageButton btnShow;
+    FloatingActionButton btnShow;
 
     String monthStrings[] = {"January", "February", "March", "April", "May", "June",
             "July", "August", "September", "October", "November", "December"};
@@ -47,7 +48,7 @@ public class ActivityTestMarksAndAttendance extends AppCompatActivity {
         spnYear = (Spinner) findViewById(R.id.spnYear);
         edtStudentId = (EditText) findViewById(R.id.edtStudentId);
 
-        btnShow = (ImageButton) findViewById(R.id.btnShow);
+        btnShow = (FloatingActionButton) findViewById(R.id.btnShow);
         btnShow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -7,9 +7,8 @@ public class ClassAnnouncement {
     private String title;
     private String message;
     private String date;
-    private String notified;
-    private String isPushed;
-    private String displayOnMain;
+    private String notified = null;
+    private String displayOnMain = null;
 
     public ClassAnnouncement() {
         //Necessary for firebase
@@ -32,10 +31,6 @@ public class ClassAnnouncement {
         this.notified = notified;
     }
 
-    public void setIsPushed(String isPushed) {
-        this.isPushed = isPushed;
-    }
-
     public void setDisplayOnMain(String displayOnMain) {
         this.displayOnMain = displayOnMain;
     }
@@ -55,10 +50,6 @@ public class ClassAnnouncement {
 
     public String getNotified() {
         return notified;
-    }
-
-    public String getIsPushed() {
-        return isPushed;
     }
 
     public String getDisplayOnMain() {

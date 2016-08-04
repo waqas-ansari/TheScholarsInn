@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "328204566856",
+    "firebase_url": "https://the-scholars-inn.firebaseio.com",
+    "project_id": "the-scholars-inn",
+    "storage_bucket": "the-scholars-inn.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:328204566856:android:3a62acb9f1d08ff7",
+        "android_client_info": {
+          "package_name": "com.arktech.waqasansari.thescholarsinn"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "328204566856-dj6cg32trnn48mtr0brcqcf6s4mioe4a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCveJq-OJfhNjD_RE7ePP-ofA6qfn6XkLA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

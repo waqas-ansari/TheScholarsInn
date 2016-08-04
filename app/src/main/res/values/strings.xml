@@ -22,7 +22,7 @@
     <string name="text_institute">Institute: </string>
     <string name="text_email">Email ID: </string>
     <string name="text_topic">Topic:</string>
-    <string name="text_new_ann">New Announcement</string>
+    <string name="text_new_ann">New Notification</string>
     <string name="text_test_days">Test Days</string>
     <string name="text_time_table">Time Table</string>
     <string name="text_feature">Features</string>
@@ -37,7 +37,7 @@
     <string name="text_new_announcement">No new Announcement</string>
     <string name="text_contact">Contact</string>
     <string name="text_about">About Us</string>
-    <string name="text_about_us">The Scholars\' Inn Coaching System is the only system in Liaquatabad which is providing quality education to the students for almost one and a half decade. Strict test system, qualified and enthusiastic teachers and quality notes do great job in making our students secure good grades in examination. More than 70% of our students have secured A-One and A Grades by now in secondary and higher secondary examinations. Our computerized management software and Android App on Play Store also help students in analyzing themselves by generating reports, giving full information about students\' test progress, attendance, fee payment schedule and much more. We not only help students to analyze themselves but also keep informing parents about the performance of their son/daughter in our system by means of Reports, SMS, telephone and Mobile Application.</string>
+    <string name="text_about_us">The Scholars\' Inn Coaching System is the only system in Liaquatabad which is providing quality education to the students for almost two decades. Strict test system, qualified and enthusiastic teachers and quality notes do great job in making our students secure good grades in examination. More than 70% of our students have secured A-One and A Grades by now in secondary and higher secondary examinations. Our computerized management software and Android App on Play Store also help students in analyzing themselves by generating reports, giving full information about students\' test progress, attendance, fee payment schedule and much more. We not only help students to analyze themselves but also keep informing parents about the performance of their son/daughter in our system by means of Reports, SMS, telephone and Mobile Application.</string>
     <string name="text_time_table_main">Time Table</string>
     <string name="text_call">(021) 34920339</string>
     <string name="text_message">0312-SCHOLAR</string>
@@ -53,9 +53,10 @@
         \t* Experienced and qualified Teachers\n
         \t* Website\n
         \t* Stand-by Generator\n
-        \t* Mutimedia Projector\n
+        \t* Multimedia Projector\n
         \t* Android Application on Play Store\n
-        \t* Past year papers (1985 and onwards)\n\n
+        \t* Past year papers (1985 and onward)\n\n
         and much more for the students of Scholars\' Inn</string>
     <string name="text_email_address">info@thescholarsinn.com</string>
+    <string name="text_ok">Ok</string>
 </resources>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.arktech.waqasansari.thescholarsinn" >
+    package="com.arktech.waqasansari.thescholarsinn">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -9,28 +9,64 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme" >
-
+        android:theme="@style/AppTheme">
         <activity
             android:name=".ActivityHome"
             android:configChanges="orientation"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ActivityTeachers" android:configChanges="orientation" />
-        <activity android:name=".ActivityAnnouncement" android:configChanges="orientation" />
-        <activity android:name=".ActivityFacebook" android:configChanges="orientation" />
-        <activity android:name=".ActivityScheduledTests" android:configChanges="orientation" />
-        <activity android:name=".ActivityTestMarksAndAttendance" android:screenOrientation="portrait" />
-        <activity android:name=".ActivityTweets" android:configChanges="orientation" />
-        <activity android:name=".ActivityTimeTable" android:configChanges="orientation" />
-        <activity android:name=".ActivityAboutUs" android:configChanges="orientation" />
-        <activity android:name=".ActivityContactUs" android:configChanges="orientation" />
+        <activity
+            android:name=".ActivityTeachers"
+            android:configChanges="orientation" />
+        <activity
+            android:name=".ActivityAnnouncement"
+            android:configChanges="orientation" />
+        <activity
+            android:name=".ActivityFacebook"
+            android:configChanges="orientation" />
+        <activity
+            android:name=".ActivityScheduledTests"
+            android:configChanges="orientation" />
+        <activity
+            android:name=".ActivityTestMarksAndAttendance"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ActivityTweets"
+            android:configChanges="orientation" />
+        <activity
+            android:name=".ActivityTimeTable"
+            android:configChanges="orientation" />
+        <activity
+            android:name=".ActivityAboutUs"
+            android:configChanges="orientation" />
+        <activity
+            android:name=".ActivityContactUs"
+            android:configChanges="orientation" />
 
+        <service android:name=".ServiceFirebaseMessage">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:name=".ServiceFirebaseID">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+
+        <activity
+            android:name=".ActivityShowNotification"
+            android:theme="@style/Theme.AppCompat.Light.Dialog">
+            <intent-filter>
+                <action android:name="ACTIVITY_SHOW_NOTIFICATION" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

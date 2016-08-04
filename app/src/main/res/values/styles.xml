@@ -24,4 +24,9 @@
         <item name="textAllCaps">false</item>
     </style>
 
+    <style name="DialogTheme" parent="Theme.AppCompat.Dialog">
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
 </resources>
