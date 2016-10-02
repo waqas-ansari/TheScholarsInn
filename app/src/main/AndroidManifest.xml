@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ActivityHome"
+            android:name=".activities.ActivityHome"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -21,46 +21,46 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ActivityTeachers"
+            android:name=".activities.ActivityTeachers"
             android:configChanges="orientation" />
         <activity
-            android:name=".ActivityAnnouncement"
+            android:name=".activities.ActivityAnnouncement"
             android:configChanges="orientation" />
         <activity
-            android:name=".ActivityFacebook"
+            android:name=".activities.ActivityFacebook"
             android:configChanges="orientation" />
         <activity
-            android:name=".ActivityScheduledTests"
+            android:name=".activities.ActivityScheduledTests"
             android:configChanges="orientation" />
         <activity
-            android:name=".ActivityTestMarksAndAttendance"
+            android:name=".activities.ActivityTestMarksAndAttendance"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ActivityTweets"
+            android:name=".activities.ActivityTweets"
             android:configChanges="orientation" />
         <activity
-            android:name=".ActivityTimeTable"
+            android:name=".activities.ActivityTimeTable"
             android:configChanges="orientation" />
         <activity
-            android:name=".ActivityAboutUs"
+            android:name=".activities.ActivityAboutUs"
             android:configChanges="orientation" />
         <activity
-            android:name=".ActivityContactUs"
+            android:name=".activities.ActivityContactUs"
             android:configChanges="orientation" />
 
-        <service android:name=".ServiceFirebaseMessage">
+        <service android:name=".services.ServiceFirebaseMessage">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-        <service android:name=".ServiceFirebaseID">
+        <service android:name=".services.ServiceFirebaseID">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
 
         <activity
-            android:name=".ActivityShowNotification"
+            android:name=".activities.ActivityShowNotification"
             android:theme="@style/Theme.AppCompat.Light.Dialog">
             <intent-filter>
                 <action android:name="ACTIVITY_SHOW_NOTIFICATION" />

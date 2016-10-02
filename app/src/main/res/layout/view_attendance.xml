@@ -147,7 +147,7 @@
 
     </LinearLayout>
 
-    <com.arktech.waqasansari.thescholarsinn.ExpandedListView
+    <com.arktech.waqasansari.thescholarsinn.custom_views.ExpandedListView
         android:id="@+id/lstAttendance"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
